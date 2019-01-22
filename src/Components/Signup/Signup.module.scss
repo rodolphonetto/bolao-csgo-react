@@ -1,0 +1,37 @@
+.signupForm {
+  display: grid;
+  align-self: flex-start;
+  justify-self: center;
+  min-width: 700px;
+  background: rgba(22, 22, 22, 0.486);
+  padding: 40px;
+}
+
+h1 {
+  justify-self: center;
+  font-size: 2rem;
+  color: rgb(255, 255, 255);
+  margin-bottom: 40px;
+}
+
+.labels {
+  align-self: center;
+  font-size: 1.2rem;
+  color: rgb(255, 255, 255);
+}
+
+.inputs {
+  border: 1px solid black;
+  padding: 10px;
+  border-radius: 5px;
+  width: 420px;
+  font-family: "Sarabun", sans-serif;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.inputGroup {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
