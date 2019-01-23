@@ -4,16 +4,13 @@ import Label from "../Layout/Label";
 import Input from "../Layout/Input";
 import ConfirmButton from "../Layout/ConfirmButton";
 
-import style from "./Signup.module.scss";
+import style from "./Login.module.scss";
 
-class Signup extends Component {
+class Login extends Component {
   constructor() {
     super();
     this.state = {
-      username: "",
-      email: "",
       password: "",
-      password2: "",
       errors: {}
     };
   }
@@ -32,7 +29,7 @@ class Signup extends Component {
   render() {
     return (
       <div className={style.Form}>
-        <h1>Crie sua conta</h1>
+        <h1>Faça o Login</h1>
         <form onSubmit={this.onSubmit}>
           <div className={style.inputGroup}>
             <Label htmlFor="username">Nome de Usuario</Label>
@@ -40,15 +37,6 @@ class Signup extends Component {
               type="text"
               name="username"
               value={this.state.username}
-              changed={this.onChangeHandler}
-            />
-          </div>
-          <div className={style.inputGroup}>
-            <Label htmlFor="email">Email</Label>
-            <Input
-              type="text"
-              name="email"
-              value={this.state.email}
               changed={this.onChangeHandler}
             />
           </div>
@@ -61,20 +49,11 @@ class Signup extends Component {
               changed={this.onChangeHandler}
             />
           </div>
-          <div className={style.inputGroup}>
-            <Label htmlFor="password">Repetir senha</Label>
-            <Input
-              type="password"
-              name="password2"
-              value={this.state.password2}
-              changed={this.onChangeHandler}
-            />
-          </div>
-          <ConfirmButton type="submit">Cadastrar</ConfirmButton>
+          <ConfirmButton type="submit">Entrar</ConfirmButton>
         </form>
       </div>
     );
   }
 }
 
-export default Signup;
+export default Login;
