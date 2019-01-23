@@ -35,3 +35,23 @@ h1 {
   justify-content: space-between;
   margin-bottom: 40px;
 }
+
+.buttonConfirm {
+  display: block;
+  margin: 0 auto;
+  padding: 10px;
+  width: 200px;
+  background: black;
+  border: 1px solid white;
+  color: white;
+  font-family: "Sarabun", sans-serif;
+  font-size: 1.2rem;
+  transition: all .3s
+}
+
+.buttonConfirm:hover {
+  cursor: pointer;
+  background: white;
+  color: black;
+  border: 1px solid black;
+}
