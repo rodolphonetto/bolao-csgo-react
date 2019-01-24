@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import axios from 'axios'
+import axios from "axios";
 
 import Label from "../Layout/Label";
 import Input from "../Layout/Input";
@@ -22,7 +22,18 @@ class Signup extends Component {
 
   onSubmit = event => {
     event.preventDefault();
-    console.log("oi bom dia");
+
+    const newUser = {
+      username: this.state.username,
+      email: this.state.email,
+      password: this.state.password,
+      password2: this.state.password2
+    };
+
+    axios
+      .post(process.env.REACT_APP_URL_START + "/auth/signup", newUser)
+      .then(res => console.log(res.data))
+      .catch(err => console.log(err.response.data))
   };
 
   onChangeHandler = event => {
