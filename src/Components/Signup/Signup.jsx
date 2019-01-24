@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 
 import axios from "axios";
+import classnames from "classnames";
 
 import Label from "../Layout/Label";
 import Input from "../Layout/Input";
@@ -29,11 +30,22 @@ class Signup extends Component {
       password: this.state.password,
       password2: this.state.password2
     };
-
     axios
-      .post(process.env.REACT_APP_URL_START + "/auth/signup", newUser)
-      .then(res => console.log(res.data))
-      .catch(err => console.log(err.response.data))
+      .post(`${process.env.REACT_APP_URL_START}/auth/signup`, newUser)
+      .then(
+        this.setState(() => {
+          return {
+            errors: {}
+          };
+        })
+      )
+      .catch(err => {
+        this.setState(() => {
+          return {
+            errors: err.response.data
+          };
+        });
+      });
   };
 
   onChangeHandler = event => {
@@ -47,41 +59,60 @@ class Signup extends Component {
       <div className={style.Form}>
         <h1>Crie sua conta</h1>
         <form onSubmit={this.onSubmit}>
-          <div className={style.inputGroup}>
+          <div className={classnames(style.inputGroup)}>
             <Label htmlFor="username">Nome de Usuario</Label>
             <Input
               type="text"
               name="username"
+              error={this.state.errors.username}
               value={this.state.username}
               changed={this.onChangeHandler}
             />
+            {this.state.errors.username && (
+              <div className={style.errorMessage}>
+                {this.state.errors.username}
+              </div>
+            )}
           </div>
-          <div className={style.inputGroup}>
+          <div className={classnames(style.inputGroup)}>
             <Label htmlFor="email">Email</Label>
             <Input
               type="text"
               name="email"
+              error={this.state.errors.email}
               value={this.state.email}
               changed={this.onChangeHandler}
             />
           </div>
-          <div className={style.inputGroup}>
+          <div className={classnames(style.inputGroup)}>
             <Label htmlFor="password">Senha</Label>
             <Input
               type="password"
               name="password"
+              error={this.state.errors.password}
               value={this.state.password}
               changed={this.onChangeHandler}
             />
+            {this.state.errors.password && (
+              <div className={style.errorMessage}>
+                {this.state.errors.password}
+              </div>
+            )}
           </div>
-          <div className={style.inputGroup}>
+          <div className={classnames(style.inputGroup)}>
             <Label htmlFor="password">Repetir senha</Label>
             <Input
               type="password"
               name="password2"
+              error={this.state.errors.password}
               value={this.state.password2}
               changed={this.onChangeHandler}
             />
+            {this.state.errors.password && (
+              <div className={style.errorMessage}>
+                {this.state.errors.password}
+              </div>
+            )}
           </div>
           <ConfirmButton type="submit">Cadastrar</ConfirmButton>
         </form>

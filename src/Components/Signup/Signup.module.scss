@@ -1,8 +1,7 @@
 .Form {
   display: grid;
-  align-self: flex-start;
+  align-self: start;
   justify-self: center;
-  min-width: 700px;
   background: rgba(22, 22, 22, 0.486);
   padding: 40px;
 }
@@ -15,7 +14,17 @@ h1 {
 }
 
 .inputGroup {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    "label input"
+    "- msg";
   margin-bottom: 40px;
+}
+
+.errorMessage {
+  font-size: 0.9rem;
+  margin-top: 3px;
+  color: rgb(241, 52, 52);
+  grid-area: msg;
 }
