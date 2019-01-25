@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 
 import axios from "axios";
 import classnames from "classnames";
@@ -20,6 +21,10 @@ class Signup extends Component {
       errors: {}
     };
   }
+
+  preventRefresh = event => {
+    event.preventDefault();
+  };
 
   onSubmit = event => {
     event.preventDefault();
@@ -58,7 +63,7 @@ class Signup extends Component {
     return (
       <div className={style.Form}>
         <h1>Crie sua conta</h1>
-        <form onSubmit={this.onSubmit}>
+        <form onSubmit={this.preventRefresh}>
           <div className={classnames(style.inputGroup)}>
             <Label htmlFor="username">Nome de Usuario</Label>
             <Input
@@ -114,11 +119,26 @@ class Signup extends Component {
               </div>
             )}
           </div>
-          <ConfirmButton type="submit">Cadastrar</ConfirmButton>
+          <ConfirmButton click={this.props.onSubmit}>Cadastrar</ConfirmButton>
         </form>
       </div>
     );
   }
 }
 
-export default Signup;
+const mapStateToProps = state => {
+  return {
+    isAuthenticated: state.isAuthenticated
+  };
+};
+
+const mapDispatchtoProps = dispatch => {
+  return {
+    onSubmit: () => dispatch({ type: "ON_SUBMIT", payload: this.state })
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchtoProps
+)(Signup);
