@@ -6,14 +6,9 @@ import classnames from "classnames";
 const Input = props => {
   let hasErrors = "";
 
-  // props.error.map(m => {
-  //   console.log(m);
-  // });
-
-  console.log(props.error)
   if (props.error) {
     hasErrors = style.hasErrors;
-  } 
+  }
 
   return (
     <input

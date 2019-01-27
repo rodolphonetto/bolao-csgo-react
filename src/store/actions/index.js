@@ -1,0 +1,1 @@
+export { singup } from "./signup";

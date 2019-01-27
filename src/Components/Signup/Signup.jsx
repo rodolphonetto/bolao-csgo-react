@@ -1,12 +1,14 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import axios from "axios";
 import classnames from "classnames";
+
+import * as signupActions from "../../store/actions/index";
 
 import Label from "../Layout/Label";
 import Input from "../Layout/Input";
 import ConfirmButton from "../Layout/ConfirmButton";
+import ModalMessage from "../Layout/ModalMessage";
 
 import style from "./Signup.module.scss";
 
@@ -17,16 +19,11 @@ class Signup extends Component {
       username: "",
       email: "",
       password: "",
-      password2: "",
-      errors: {}
+      password2: ""
     };
   }
 
-  preventRefresh = event => {
-    event.preventDefault();
-  };
-
-  onSubmit = event => {
+  onSignup = event => {
     event.preventDefault();
 
     const newUser = {
@@ -35,22 +32,8 @@ class Signup extends Component {
       password: this.state.password,
       password2: this.state.password2
     };
-    axios
-      .post(`${process.env.REACT_APP_URL_START}/auth/signup`, newUser)
-      .then(
-        this.setState(() => {
-          return {
-            errors: {}
-          };
-        })
-      )
-      .catch(err => {
-        this.setState(() => {
-          return {
-            errors: err.response.data
-          };
-        });
-      });
+
+    this.props.onSignup(newUser);
   };
 
   onChangeHandler = event => {
@@ -63,19 +46,19 @@ class Signup extends Component {
     return (
       <div className={style.Form}>
         <h1>Crie sua conta</h1>
-        <form onSubmit={this.preventRefresh}>
+        <form onSubmit={this.onSignup}>
           <div className={classnames(style.inputGroup)}>
             <Label htmlFor="username">Nome de Usuario</Label>
             <Input
               type="text"
               name="username"
-              error={this.state.errors.username}
+              error={this.props.errors.username}
               value={this.state.username}
               changed={this.onChangeHandler}
             />
-            {this.state.errors.username && (
+            {this.props.errors.username && (
               <div className={style.errorMessage}>
-                {this.state.errors.username}
+                {this.props.errors.username}
               </div>
             )}
           </div>
@@ -84,23 +67,28 @@ class Signup extends Component {
             <Input
               type="text"
               name="email"
-              error={this.state.errors.email}
+              error={this.props.errors.email}
               value={this.state.email}
               changed={this.onChangeHandler}
             />
+            {this.props.errors.email && (
+              <div className={style.errorMessage}>
+                {this.props.errors.email}
+              </div>
+            )}
           </div>
           <div className={classnames(style.inputGroup)}>
             <Label htmlFor="password">Senha</Label>
             <Input
               type="password"
               name="password"
-              error={this.state.errors.password}
+              error={this.props.errors.password}
               value={this.state.password}
               changed={this.onChangeHandler}
             />
-            {this.state.errors.password && (
+            {this.props.errors.password && (
               <div className={style.errorMessage}>
-                {this.state.errors.password}
+                {this.props.errors.password}
               </div>
             )}
           </div>
@@ -109,18 +97,19 @@ class Signup extends Component {
             <Input
               type="password"
               name="password2"
-              error={this.state.errors.password}
+              error={this.props.errors.password}
               value={this.state.password2}
               changed={this.onChangeHandler}
             />
-            {this.state.errors.password && (
+            {this.props.errors.password && (
               <div className={style.errorMessage}>
-                {this.state.errors.password}
+                {this.props.errors.password}
               </div>
             )}
           </div>
-          <ConfirmButton click={this.props.onSubmit}>Cadastrar</ConfirmButton>
+          <ConfirmButton>Cadastrar</ConfirmButton>
         </form>
+        {this.props.msg && <ModalMessage message={this.props.msg.msg} />}
       </div>
     );
   }
@@ -128,13 +117,14 @@ class Signup extends Component {
 
 const mapStateToProps = state => {
   return {
-    isAuthenticated: state.isAuthenticated
+    msg: state.signup.msg,
+    errors: state.signup.errors
   };
 };
 
 const mapDispatchtoProps = dispatch => {
   return {
-    onSubmit: () => dispatch({ type: "ON_SUBMIT", payload: this.state })
+    onSignup: newUser => dispatch(signupActions.singup(newUser))
   };
 };
 
