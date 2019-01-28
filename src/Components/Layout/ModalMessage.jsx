@@ -6,6 +6,8 @@ const ModalMessage = props => {
 
   if (props.type === "error") {
     classe = style.error;
+  } else if (props.type === "ok") {
+    classe = style.ok;
   }
 
   return (

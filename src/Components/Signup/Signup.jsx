@@ -44,6 +44,16 @@ class Signup extends Component {
     });
   };
 
+  componentDidUpdate() {
+    console.log(this.props.msg);
+    if (this.props.msg) {
+      console.log(this.props.msg);
+      setTimeout(() => {
+        this.props.history.push("/");
+      }, 2000);
+    }
+  }
+
   render() {
     return (
       <div className={style.Form}>
@@ -101,12 +111,14 @@ class Signup extends Component {
               <InputError>{this.props.errors.password}</InputError>
             )}
           </div>
-          {this.props.loading === false && (
-            <ConfirmButton>Cadastrar</ConfirmButton>
-          )}
+          {!this.props.loading && <ConfirmButton>Cadastrar</ConfirmButton>}
           {this.props.loading === true && <Spinner />}
         </form>
-        {this.props.msg && <ModalMessage message={this.props.msg.msg} />}
+        {this.props.msg && (
+          <ModalMessage handleDestroy type="ok">
+            {this.props.msg}
+          </ModalMessage>
+        )}
       </div>
     );
   }
@@ -115,7 +127,7 @@ class Signup extends Component {
 const mapStateToProps = state => {
   return {
     loading: state.signup.loading,
-    msg: state.signup.msg,
+    msg: state.signup.msg.msg,
     errors: state.signup.errors
   };
 };
