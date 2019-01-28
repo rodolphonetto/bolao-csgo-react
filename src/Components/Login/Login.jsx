@@ -1,23 +1,35 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+
+import * as authActions from "../../store/actions/index";
 
 import Label from "../Layout/Label";
 import Input from "../Layout/Input";
 import ConfirmButton from "../Layout/ConfirmButton";
+import Spinner from "../Layout/Spinner";
+import ModalMessage from "../Layout/ModalMessage";
 
 import style from "./Login.module.scss";
+let message = null;
 
 class Login extends Component {
   constructor() {
     super();
     this.state = {
-      password: "",
-      errors: {}
+      username: "",
+      password: ""
     };
   }
 
   onSubmit = event => {
     event.preventDefault();
-    console.log("oi bom dia");
+
+    const userData = {
+      username: this.state.username,
+      password: this.state.password
+    };
+
+    this.props.onLogin(userData);
   };
 
   onChangeHandler = event => {
@@ -25,6 +37,16 @@ class Login extends Component {
       [event.target.name]: event.target.value
     });
   };
+
+  componentDidUpdate() {
+    if (this.props.errors.userNotFound) {
+      message = this.props.errors.userNotFound;
+      console.log(message);
+    } else if (this.props.errors.wrongPassword) {
+      message = this.props.errors.wrongPassword;
+      console.log(message);
+    }
+  }
 
   render() {
     return (
@@ -49,11 +71,31 @@ class Login extends Component {
               changed={this.onChangeHandler}
             />
           </div>
-          <ConfirmButton type="submit">Entrar</ConfirmButton>
+          {this.props.loading === false && (
+            <ConfirmButton>Entrar</ConfirmButton>
+          )}
+          {this.props.loading === true && <Spinner />}
         </form>
+        {message && <ModalMessage type="error">{message}</ModalMessage>}
       </div>
     );
   }
 }
 
-export default Login;
+const mapStateToProps = state => {
+  return {
+    loading: state.auth.loading,
+    errors: state.auth.errors
+  };
+};
+
+const mapDispatchtoProps = dispatch => {
+  return {
+    onLogin: userData => dispatch(authActions.login(userData))
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchtoProps
+)(Login);

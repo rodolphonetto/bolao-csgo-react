@@ -1,9 +1,15 @@
 import * as actionTypes from "./actionTypes";
 import axios from "axios";
 
-export const singupSucess = msg => {
+export const signupStart = () => {
   return {
-    type: actionTypes.SIGNUP_SUCESS,
+    type: actionTypes.SIGNUP_START
+  };
+};
+
+export const singupSuccess = msg => {
+  return {
+    type: actionTypes.SIGNUP_SUCCESS,
     msg: msg
   };
 };
@@ -17,10 +23,11 @@ export const singupFailed = errors => {
 
 export const singup = newUser => {
   return dispatch => {
+    dispatch(signupStart());
     axios
       .post(`${process.env.REACT_APP_URL_START}/auth/signup`, newUser)
       .then(response => {
-        dispatch(singupSucess(response.data));
+        dispatch(singupSuccess(response.data));
       })
       .catch(err => {
         dispatch(singupFailed(err.response.data));

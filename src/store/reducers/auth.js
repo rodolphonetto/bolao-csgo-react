@@ -1,15 +1,42 @@
+import isEmpty from "../../validation/is-empty";
+
+import * as actionTypes from "../actions/actionTypes";
+
 const initialState = {
   isAuthenticated: false,
+  token: {},
+  currentUser: {},
+  loading: false,
+  errors: {}
 };
 
 const reducer = (state = initialState, action) => {
- 
-  if (action.type === 'ON_SUBMIT') {
-    return {
-      
-    }
+  switch (action.type) {
+    case actionTypes.LOGIN_START:
+      return {
+        ...state,
+        errors: {},
+        loading: true
+      };
+
+    case actionTypes.LOGIN_SUCCESS:
+      return {
+        ...state,
+        isAuthenticated: !isEmpty(action.data),
+        currentUser: action.data,
+        errors: {},
+        loading: false
+      };
+
+    case actionTypes.LOGIN_FAILED:
+      return {
+        ...state,
+        errors: action.errors,
+        loading: false
+      };
+    default:
+      return state;
   }
-  return state;
 };
 
 export default reducer;

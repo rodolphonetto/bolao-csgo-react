@@ -7,8 +7,10 @@ import * as signupActions from "../../store/actions/index";
 
 import Label from "../Layout/Label";
 import Input from "../Layout/Input";
+import InputError from "../Layout/InputError";
 import ConfirmButton from "../Layout/ConfirmButton";
 import ModalMessage from "../Layout/ModalMessage";
+import Spinner from "../Layout/Spinner";
 
 import style from "./Signup.module.scss";
 
@@ -57,9 +59,7 @@ class Signup extends Component {
               changed={this.onChangeHandler}
             />
             {this.props.errors.username && (
-              <div className={style.errorMessage}>
-                {this.props.errors.username}
-              </div>
+              <InputError>{this.props.errors.username}</InputError>
             )}
           </div>
           <div className={classnames(style.inputGroup)}>
@@ -72,9 +72,7 @@ class Signup extends Component {
               changed={this.onChangeHandler}
             />
             {this.props.errors.email && (
-              <div className={style.errorMessage}>
-                {this.props.errors.email}
-              </div>
+              <InputError>{this.props.errors.email}</InputError>
             )}
           </div>
           <div className={classnames(style.inputGroup)}>
@@ -87,9 +85,7 @@ class Signup extends Component {
               changed={this.onChangeHandler}
             />
             {this.props.errors.password && (
-              <div className={style.errorMessage}>
-                {this.props.errors.password}
-              </div>
+              <InputError>{this.props.errors.password}</InputError>
             )}
           </div>
           <div className={classnames(style.inputGroup)}>
@@ -102,12 +98,13 @@ class Signup extends Component {
               changed={this.onChangeHandler}
             />
             {this.props.errors.password && (
-              <div className={style.errorMessage}>
-                {this.props.errors.password}
-              </div>
+              <InputError>{this.props.errors.password}</InputError>
             )}
           </div>
-          <ConfirmButton>Cadastrar</ConfirmButton>
+          {this.props.loading === false && (
+            <ConfirmButton>Cadastrar</ConfirmButton>
+          )}
+          {this.props.loading === true && <Spinner />}
         </form>
         {this.props.msg && <ModalMessage message={this.props.msg.msg} />}
       </div>
@@ -117,6 +114,7 @@ class Signup extends Component {
 
 const mapStateToProps = state => {
   return {
+    loading: state.signup.loading,
     msg: state.signup.msg,
     errors: state.signup.errors
   };
