@@ -38,17 +38,13 @@ class Login extends Component {
     });
   };
 
-  componentDidUpdate() {
+  render() {
     if (this.props.errors.userNotFound) {
       message = this.props.errors.userNotFound;
-      console.log(message);
     } else if (this.props.errors.wrongPassword) {
       message = this.props.errors.wrongPassword;
-      console.log(message);
     }
-  }
 
-  render() {
     return (
       <div className={style.Form}>
         <h1>Faça o Login</h1>
