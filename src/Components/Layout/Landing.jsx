@@ -5,12 +5,14 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import NavBar from "./NavBar";
 import Signup from "../Signup/Signup";
 import Login from "../Login/Login";
+import Country from "../Country/Country";
 
 const Landing = () => {
   return (
     <div className={style.landing}>
       <NavBar />
-      <Route path="/signup" component={Signup} />
+      <Route path="/signup" exact component={Signup} />
+      <Route path="/countries" exact component={Country} />
       <Route path="/" exact component={Login} />
     </div>
   );
