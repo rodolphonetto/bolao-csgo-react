@@ -4,7 +4,6 @@ const setAuthToken = token => {
   if (token) {
     axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
   } else {
-    console.log("oi");
     delete axios.defaults.headers.common["Authorization"];
   }
 };

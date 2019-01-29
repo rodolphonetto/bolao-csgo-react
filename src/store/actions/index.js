@@ -1,3 +1,3 @@
 export { singup } from "./signup";
-export { login, loginSuccess } from "./auth";
+export { login, loginSuccess, logout } from "./auth";
 export { countryOpen } from "./country";

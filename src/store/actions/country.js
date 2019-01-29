@@ -1,8 +1,11 @@
 import * as actionTypes from "./actionTypes";
+import * as authActions from "./index";
+
 import axios from "axios";
 
 export const countryOpen = () => {
   return dispatch => {
+    dispatch(countryLoading());
     axios
       .get(`${process.env.REACT_APP_URL_START}/countries`)
       .then(countries => {
@@ -10,7 +13,15 @@ export const countryOpen = () => {
       })
       .catch(err => {
         dispatch(countryOpenFailed(err.response.data));
+        dispatch(authActions.logout());
       });
+  };
+};
+
+export const countryLoading = countries => {
+  return {
+    type: actionTypes.COUNTRY_LOADING,
+    data: countries
   };
 };
 

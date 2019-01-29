@@ -9,7 +9,7 @@ import store from "./store";
 
 // Check token
 if (localStorage.jwtToken) {
-  setAuthToken(localStorage.jwtToken);
+  setAuthToken(localStorage.jwtToken)
   // Decode token and get user info and exp
   const decoded = jwt_decode(localStorage.jwtToken);
   // Set user and isAuthenticated
