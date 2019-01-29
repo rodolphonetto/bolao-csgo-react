@@ -45,9 +45,7 @@ class Signup extends Component {
   };
 
   componentDidUpdate() {
-    console.log(this.props.msg);
     if (this.props.msg) {
-      console.log(this.props.msg);
       setTimeout(() => {
         this.props.history.push("/");
       }, 2000);
@@ -115,9 +113,7 @@ class Signup extends Component {
           {this.props.loading === true && <Spinner />}
         </form>
         {this.props.msg && (
-          <ModalMessage handleDestroy type="ok">
-            {this.props.msg}
-          </ModalMessage>
+          <ModalMessage type="ok">{this.props.msg}</ModalMessage>
         )}
       </div>
     );

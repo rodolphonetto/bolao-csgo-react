@@ -4,7 +4,6 @@ import countryReducer from "./store/reducers/country";
 import thunk from "redux-thunk";
 
 import { createStore, combineReducers, applyMiddleware, compose } from "redux";
-import { Provider } from "react-redux";
 
 const rootReducer = combineReducers({
   auth: authReducer,

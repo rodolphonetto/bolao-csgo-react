@@ -3,6 +3,7 @@ import * as authActions from "./index";
 
 import axios from "axios";
 
+// COUNTRY SELECTION
 export const countryOpen = () => {
   return dispatch => {
     dispatch(countryLoading());
@@ -35,6 +36,36 @@ export const countryOpenSuccess = countries => {
 export const countryOpenFailed = errors => {
   return {
     type: actionTypes.COUNTRY_OPEN_FAILED,
+    errors: errors
+  };
+};
+
+// COUNTRY EDIT
+export const countryEditOpen = countryID => {
+  return dispatch => {
+    dispatch(countryLoading());
+    axios
+      .get(`${process.env.REACT_APP_URL_START}/countries/edit-country/${countryID}`)
+      .then(countries => {
+        dispatch(countryEditOpenSuccess(countries.data));
+      })
+      .catch(err => {
+        dispatch(countryEditOpenFailed(err.response.data));
+        // dispatch(authActions.logout());
+      });
+  };
+};
+
+export const countryEditOpenSuccess = country => {
+  return {
+    type: actionTypes.COUNTRY_EDIT_OPEN_SUCCESS,
+    country: country
+  };
+};
+
+export const countryEditOpenFailed = errors => {
+  return {
+    type: actionTypes.COUNTRY_EDIT_OPEN_FAILED,
     errors: errors
   };
 };

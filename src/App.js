@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Landing from "./Components/Layout/Landing";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import { loginSuccess } from "./store/actions/index";
 import { Provider } from "react-redux";
 import setAuthToken from "./util/setAuthToken";

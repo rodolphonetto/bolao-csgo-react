@@ -29,6 +29,7 @@ const reducer = (state = initialState, action) => {
       };
 
     case actionTypes.LOGIN_FAILED:
+      localStorage.removeItem("jwtToken");
       return {
         ...state,
         isAuthenticated: false,
@@ -42,7 +43,6 @@ const reducer = (state = initialState, action) => {
         isAuthenticated: false,
         token: {},
         currentUser: {},
-        loading: false,
         errors: {}
       };
     default:

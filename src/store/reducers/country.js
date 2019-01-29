@@ -3,6 +3,7 @@ import * as actionTypes from "../actions/actionTypes";
 const initialState = {
   loading: false,
   countries: [],
+  country: null,
   errors: null
 };
 
@@ -26,6 +27,11 @@ const reducer = (state = initialState, action) => {
         ...state,
         loading: false,
         errors: action.errors
+      };
+    case actionTypes.COUNTRY_EDIT_OPEN_SUCCESS:
+      return {
+        ...state,
+        country: action.country
       };
     default:
       return state;

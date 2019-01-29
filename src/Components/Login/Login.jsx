@@ -10,7 +10,6 @@ import Spinner from "../Layout/Spinner";
 import ModalMessage from "../Layout/ModalMessage";
 
 import style from "./Login.module.scss";
-let message = null;
 
 class Login extends Component {
   constructor() {
@@ -38,7 +37,24 @@ class Login extends Component {
     });
   };
 
+  componentDidMount() {
+    if (this.props.isAuthenticated) {
+      setTimeout(() => {
+        this.props.history.push("/dashboard");
+      }, 500);
+    }
+  }
+
+  componentDidUpdate() {
+    if (this.props.isAuthenticated) {
+      setTimeout(() => {
+        this.props.history.push("/dashboard");
+      }, 2000);
+    }
+  }
+
   render() {
+    let message = null;
     if (this.props.errors.userNotFound) {
       message = this.props.errors.userNotFound;
     } else if (this.props.errors.wrongPassword) {
@@ -46,40 +62,48 @@ class Login extends Component {
     }
 
     return (
-      <div className={style.Form}>
-        <h1>Faça o Login</h1>
-        <form onSubmit={this.onSubmit}>
-          <div className={style.inputGroup}>
-            <Label htmlFor="username">Nome de Usuario</Label>
-            <Input
-              type="text"
-              name="username"
-              value={this.state.username}
-              changed={this.onChangeHandler}
-            />
-          </div>
-          <div className={style.inputGroup}>
-            <Label htmlFor="password">Senha</Label>
-            <Input
-              type="password"
-              name="password"
-              value={this.state.password}
-              changed={this.onChangeHandler}
-            />
-          </div>
-          {this.props.loading === false && (
-            <ConfirmButton>Entrar</ConfirmButton>
+      !this.props.isAuthenticated && (
+        <div className={style.Form}>
+          <h1>Faça o Login</h1>
+          <form onSubmit={this.onSubmit}>
+            <div className={style.inputGroup}>
+              <Label htmlFor="username">Nome de Usuario</Label>
+              <Input
+                type="text"
+                name="username"
+                value={this.state.username}
+                changed={this.onChangeHandler}
+              />
+            </div>
+            <div className={style.inputGroup}>
+              <Label htmlFor="password">Senha</Label>
+              <Input
+                type="password"
+                name="password"
+                value={this.state.password}
+                changed={this.onChangeHandler}
+              />
+            </div>
+            {this.props.loading === false && (
+              <ConfirmButton>Entrar</ConfirmButton>
+            )}
+            {this.props.loading === true && <Spinner />}
+          </form>
+          {message && <ModalMessage type="error">{message}</ModalMessage>}
+          {this.props.isAuthenticated && (
+            <ModalMessage type="ok">
+              Login efetuado com sucesso, direcionando...
+            </ModalMessage>
           )}
-          {this.props.loading === true && <Spinner />}
-        </form>
-        {message && <ModalMessage type="error">{message}</ModalMessage>}
-      </div>
+        </div>
+      )
     );
   }
 }
 
 const mapStateToProps = state => {
   return {
+    isAuthenticated: state.auth.isAuthenticated,
     loading: state.auth.loading,
     errors: state.auth.errors
   };
