@@ -1,0 +1,13 @@
+.inputGroup {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
+.Form {
+  display: grid;
+  align-self: flex-start;
+  justify-self: center;
+  min-width: 700px;
+  background: rgba(22, 22, 22, 0.486);
+  padding: 40px;
+}

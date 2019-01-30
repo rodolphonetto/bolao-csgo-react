@@ -5,6 +5,7 @@ import * as countryActions from "../../store/actions/index";
 import style from "./Country.module.scss";
 
 import CountryItem from "./CountryItem/CountryItem";
+import CountryEdit from "./CountryEdit/CountryEdit";
 import Spinner from "../Layout/Spinner";
 
 export class Country extends Component {
@@ -22,12 +23,14 @@ export class Country extends Component {
 
   render() {
     return (
+      // <div className={style.countries}>
       <>
+        {this.props.errors && <h1>Você não está autorizado</h1>}
+
         {this.props.loading ? (
           <Spinner />
-        ) : (
+        ) : !this.props.country ? (
           <div className={style.countries}>
-            {this.props.errors && <h1>Você não está autorizado</h1>}
             {this.props.countries.map((country, index) => {
               return (
                 <CountryItem
@@ -39,6 +42,10 @@ export class Country extends Component {
               );
             })}
           </div>
+        ) : (
+          <div className={style.countryEdit}>
+            <CountryEdit />
+          </div>
         )}
       </>
     );
@@ -49,7 +56,8 @@ const mapStateToProps = state => {
   return {
     loading: state.country.loading,
     countries: state.country.countries,
-    errors: state.country.errors
+    errors: state.country.errors,
+    country: state.country.country
   };
 };
 

@@ -3,9 +3,16 @@
 }
 
 .countries {
+  justify-self: center;
   display: grid;
   grid-column-gap: 80px;
   grid-template-columns: 1fr 1fr 1fr;
   align-self: flex-start;
   justify-self: center;
+}
+
+.countryEdit {
+  justify-self: center;
+  display: grid;
+  align-self: flex-start;
 }

@@ -14,7 +14,6 @@ const reducer = (state = initialState, action) => {
         ...state,
         loading: true
       };
-
     case actionTypes.COUNTRY_OPEN_SUCCESS:
       return {
         ...state,
@@ -31,6 +30,7 @@ const reducer = (state = initialState, action) => {
     case actionTypes.COUNTRY_EDIT_OPEN_SUCCESS:
       return {
         ...state,
+        loading: false,
         country: action.country
       };
     default:
