@@ -1,6 +1,9 @@
 .inputGroup {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    "label input"
+    "- msg";
   margin-bottom: 40px;
 }
 .Form {

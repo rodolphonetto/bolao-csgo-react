@@ -4,11 +4,16 @@ const initialState = {
   loading: false,
   countries: [],
   country: null,
-  errors: null
+  errors: {}
 };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
+    case actionTypes.COUNTRY_CLICK:
+      return {
+        ...state,
+        country: null
+      };
     case actionTypes.COUNTRY_LOADING:
       return {
         ...state,
@@ -19,7 +24,7 @@ const reducer = (state = initialState, action) => {
         ...state,
         loading: false,
         countries: action.data,
-        errors: null
+        errors: {}
       };
     case actionTypes.COUNTRY_OPEN_FAILED:
       return {
@@ -32,7 +37,7 @@ const reducer = (state = initialState, action) => {
         ...state,
         loading: false,
         country: action.country,
-        errors: null
+        errors: {}
       };
     case actionTypes.COUNTRY_EDIT_SAVE_SUCCESS:
       const oldCountries = [...state.countries].filter(
@@ -44,11 +49,12 @@ const reducer = (state = initialState, action) => {
         loading: false,
         country: null,
         countries: oldCountries.concat(action.country),
-        errors: null
+        errors: {}
       };
     case actionTypes.COUNTRY_EDIT_SAVE_FAILED:
       return {
         ...state,
+        loading: false,
         errors: action.errors
       };
 

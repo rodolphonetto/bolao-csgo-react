@@ -4,6 +4,12 @@ import * as authActions from "./index";
 import axios from "axios";
 
 // COUNTRY SELECTION
+export const countryClick = () => {
+  return {
+    type: actionTypes.COUNTRY_CLICK
+  };
+};
+
 export const countryOpen = () => {
   return dispatch => {
     dispatch(countryLoading());

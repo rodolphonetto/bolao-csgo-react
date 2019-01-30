@@ -1,10 +1,12 @@
 import React from "react";
-import style from "./scss/Button.module.scss";
+import style from "./scss/ConfirmButton.module.scss";
 
 const ConfirmButton = props => {
   return (
     <div>
-      <button className={style.ConfirmButton} type={props.type}>{props.children}</button>
+      <button className={style.ConfirmButton} type={props.type}>
+        {props.children}
+      </button>
     </div>
   );
 };

@@ -4,6 +4,8 @@ import { connect } from "react-redux";
 import * as countryActions from "../../store/actions/index";
 import style from "./Country.module.scss";
 
+import ConfirmButton from "../Layout/ConfirmButton";
+import Button from "../Layout/Button";
 import CountryItem from "./CountryItem/CountryItem";
 import CountryEdit from "./CountryEdit/CountryEdit";
 import Spinner from "../Layout/Spinner";
@@ -14,7 +16,7 @@ class Country extends Component {
   }
 
   componentDidUpdate() {
-    if (this.props.errors.msg) {
+    if (!this.props.isAuth) {
       setTimeout(() => {
         this.props.history.push("/");
       }, 2000);
@@ -23,10 +25,9 @@ class Country extends Component {
 
   render() {
     return (
-      // <div className={style.countries}>
       <>
-        {this.props.errors && <h1>Você não está autorizado</h1>}
-
+        <Button type="ok">Novo Pais</Button>
+        {!this.props.isAuth && <h1>Você não está autorizado</h1>}
         {this.props.loading ? (
           <Spinner />
         ) : !this.props.country ? (
@@ -60,6 +61,7 @@ const mapStateToProps = state => {
     loading: state.country.loading,
     countries: state.country.countries,
     errors: state.country.errors,
+    isAuth: state.auth.isAuthenticated,
     country: state.country.country
   };
 };

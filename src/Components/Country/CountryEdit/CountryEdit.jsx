@@ -7,6 +7,7 @@ import style from "./CountryEdit.module.scss";
 
 import Label from "../../Layout/Label";
 import Input from "../../Layout/Input";
+import InputError from "../../Layout/InputError";
 import ConfirmButton from "../../Layout/ConfirmButton";
 
 class CountryEdit extends Component {
@@ -55,6 +56,9 @@ class CountryEdit extends Component {
               value={this.state.name}
               changed={this.onChangeHandler}
             />
+            {this.props.errors.name && (
+              <InputError>{this.props.errors.name}</InputError>
+            )}
           </div>
           <div className={style.inputGroup}>
             <Label>Bandeira</Label>
@@ -69,7 +73,8 @@ class CountryEdit extends Component {
 }
 
 const mapStateToProps = state => ({
-  country: state.country.country
+  country: state.country.country,
+  errors: state.country.errors
 });
 
 const mapDispatchtoProps = dispatch => {
