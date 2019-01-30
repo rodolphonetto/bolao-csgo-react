@@ -8,13 +8,13 @@ import CountryItem from "./CountryItem/CountryItem";
 import CountryEdit from "./CountryEdit/CountryEdit";
 import Spinner from "../Layout/Spinner";
 
-export class Country extends Component {
+class Country extends Component {
   componentDidMount() {
     this.props.countryOpen();
   }
 
   componentDidUpdate() {
-    if (this.props.errors) {
+    if (this.props.errors.msg) {
       setTimeout(() => {
         this.props.history.push("/");
       }, 2000);
@@ -44,7 +44,10 @@ export class Country extends Component {
           </div>
         ) : (
           <div className={style.countryEdit}>
-            <CountryEdit />
+            <CountryEdit
+              name={this.props.country.name}
+              countryID={this.props.country._id}
+            />
           </div>
         )}
       </>

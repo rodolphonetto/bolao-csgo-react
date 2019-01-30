@@ -31,8 +31,27 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        country: action.country
+        country: action.country,
+        errors: null
       };
+    case actionTypes.COUNTRY_EDIT_SAVE_SUCCESS:
+      const oldCountries = [...state.countries].filter(
+        country => country._id !== action.country._id
+      );
+
+      return {
+        ...state,
+        loading: false,
+        country: null,
+        countries: oldCountries.concat(action.country),
+        errors: null
+      };
+    case actionTypes.COUNTRY_EDIT_SAVE_FAILED:
+      return {
+        ...state,
+        errors: action.errors
+      };
+
     default:
       return state;
   }

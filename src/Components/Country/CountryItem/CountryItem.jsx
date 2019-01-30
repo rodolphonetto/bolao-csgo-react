@@ -9,7 +9,6 @@ import style from "./CountryItem.module.scss";
 const CountryItem = props => {
   const onEditClick = e => {
     e.persist();
-    console.log(props._id);
     props.countryEditOpen(props._id);
   };
 
