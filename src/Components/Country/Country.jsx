@@ -21,9 +21,12 @@ class Country extends Component {
       <>
         {!this.props.isAuth && <h1>Você não está autorizado</h1>}
         {this.props.loading && <Spinner />}
-        <Route path="/countries" exact component={CountryList} />
-        <Route path="/countries/edit-country/:_id" component={CountryEdit} />
-        <Route path="/countries/add-country" component={CountryAdd} />
+        <Route path="/dashboard/countries" exact component={CountryList} />
+        <Route
+          path="/dashboard/countries/edit-country/:_id"
+          component={CountryEdit}
+        />
+        <Route path="/dashboard/countries/add-country" component={CountryAdd} />
       </>
     );
   }

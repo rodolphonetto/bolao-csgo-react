@@ -1,4 +1,7 @@
 .CountryItem {
+  padding: 20px;
+  border-top: 5px solid red;
+  background-color: white;
   justify-self: center;
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -12,7 +15,7 @@
 
 .name {
   justify-self: center;
-  color: white;
+  color: black;
   font-size: 1.5rem;
   grid-area: name;
 }
@@ -28,7 +31,7 @@
   font-weight: bold;
   font-size: 0.8rem;
   line-height: 1;
-  color: white;
+  color: black;
   text-align: center;
   padding: 8px 10px;
   border: 2px solid green;
@@ -46,7 +49,7 @@
   font-weight: bold;
   font-size: 0.8rem;
   line-height: 1;
-  color: white;
+  color: black;
   text-align: center;
   padding: 8px 10px;
   border: 2px solid red;

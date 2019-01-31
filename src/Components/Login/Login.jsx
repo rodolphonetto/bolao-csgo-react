@@ -49,7 +49,7 @@ class Login extends Component {
     if (this.props.isAuthenticated) {
       setTimeout(() => {
         this.props.history.push("/dashboard");
-      }, 2000);
+      }, 500);
     }
   }
 

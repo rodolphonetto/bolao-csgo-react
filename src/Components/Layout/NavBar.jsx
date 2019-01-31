@@ -9,7 +9,7 @@ const NavBar = props => {
     <nav className={style.navbar}>
       <ul>
         {props.isAuthenticated && (
-          <Link to="/countries">
+          <Link to="/dashboard/countries">
             <li className={style.menuOption}>Países</li>
           </Link>
         )}

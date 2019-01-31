@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Landing from "./Components/Layout/Landing";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { loginSuccess } from "./store/actions/index";
 import { Provider } from "react-redux";
@@ -7,9 +6,12 @@ import setAuthToken from "./util/setAuthToken";
 import jwt_decode from "jwt-decode";
 import store from "./store";
 
+import Landing from "./Components/Layout/Landing";
+import DashBoard from "./Components/Dashboard/Dashboard";
+
 // Check token
 if (localStorage.jwtToken) {
-  setAuthToken(localStorage.jwtToken)
+  setAuthToken(localStorage.jwtToken);
   // Decode token and get user info and exp
   const decoded = jwt_decode(localStorage.jwtToken);
   // Set user and isAuthenticated
@@ -22,7 +24,8 @@ class App extends Component {
       <Provider store={store}>
         <Router>
           <div className="App">
-            <Route path="/" component={Landing} />
+            <Route path="/" exact component={Landing} />
+            <Route path="/dashboard" component={DashBoard} />
           </div>
         </Router>
       </Provider>
