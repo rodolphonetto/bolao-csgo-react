@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 
 import CountryList from "./CountryList/CountryList";
 import CountryEdit from "./CountryEdit/CountryEdit";
+import CountryAdd from "./CountryAdd/CountryAdd";
 import Spinner from "../Layout/Spinner";
 
 class Country extends Component {
@@ -22,6 +23,7 @@ class Country extends Component {
         {this.props.loading && <Spinner />}
         <Route path="/countries" exact component={CountryList} />
         <Route path="/countries/edit-country/:_id" component={CountryEdit} />
+        <Route path="/countries/add-country" component={CountryAdd} />
       </>
     );
   }

@@ -1,0 +1,20 @@
+.countryEdit {
+  justify-self: center;
+  display: grid;
+  align-self: flex-start;
+}
+.inputGroup {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    "label input"
+    "- msg";
+  margin-bottom: 40px;
+}
+.Form {
+  display: grid;
+  align-self: flex-start;
+  justify-self: center;
+  background: rgba(22, 22, 22, 0.486);
+  padding: 40px;
+}

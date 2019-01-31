@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 import * as Actions from "../../../store/actions/index";
 
@@ -20,7 +21,11 @@ class CountryList extends Component {
 
     return (
       <>
-        {this.props.isAuth && <Button type="ok">Novo Pais</Button>}
+        {this.props.isAuth && (
+          <Link to="/countries/add-country">
+            <Button type="ok">Novo Pais</Button>
+          </Link>
+        )}
         <div className={style.countries}>{countries}</div>
       </>
     );

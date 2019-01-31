@@ -1,23 +1,35 @@
-import React, { PureComponent } from "react";
+import React, { Component } from "react";
 import { connect } from "react-redux";
 
 import * as Actions from "../../../store/actions/index";
 
-import CountryEdit from "./CountryEditItem/CountryEditItem";
+import style from "./CountryEdit.module.scss";
 
-class CountryEditList extends PureComponent {
-  componentWillMount() {
+import CountryEdit from "./CountryEditItem/CountryEditItem";
+import Spinner from "../../Layout/Spinner";
+
+class CountryEditList extends Component {
+  componentDidMount() {
     this.props.countryEditOpen(this.props.match.params._id);
-    console.log(this.props);
+  }
+
+  componentDidUpdate() {
+    if (this.props.edited) {
+      this.props.history.push("/countries");
+    }
   }
 
   render() {
     return (
-      <div>
-        <CountryEdit
-          name={this.props.country.name}
-          countryID={this.props.country._id}
-        />
+      <div className={style.countryEdit}>
+        {this.props.country.name ? (
+          <CountryEdit
+            name={this.props.country.name}
+            countryID={this.props.country._id}
+          />
+        ) : (
+          <Spinner />
+        )}
       </div>
     );
   }
@@ -25,15 +37,17 @@ class CountryEditList extends PureComponent {
 
 const mapStateToProps = state => {
   return {
-    isAuth: state.auth.isAuthenticated,
     country: state.country.country,
-    erros: state.country.errors
+    erros: state.country.errors,
+    edited: state.country.edited
   };
 };
 
 const mapDispatchtoProps = dispatch => {
   return {
-    countryEditOpen: countryID => dispatch(Actions.countryEditOpen(countryID))
+    countryEditOpen: countryID => dispatch(Actions.countryEditOpen(countryID)),
+    countryEditOpenSuccess: countryID =>
+      dispatch(Actions.countryEditOpenSuccess(countryID))
   };
 };
 

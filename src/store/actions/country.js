@@ -41,6 +41,38 @@ export const countryOpenFailed = errors => {
   };
 };
 
+// COUNTRY ADD
+export const countryAdd = countryData => {
+  return dispatch => {
+    dispatch(countryLoading());
+    axios
+      .post(
+        `${process.env.REACT_APP_URL_START}/countries/add-country`,
+        countryData
+      )
+      .then(msg => {
+        dispatch(countryAddSuccess(msg.data));
+      })
+      .catch(err => {
+        dispatch(countryAddFailed(err.response.data));
+      });
+  };
+};
+
+export const countryAddSuccess = msg => {
+  return {
+    type: actionTypes.COUNTRY_ADD_SUCCESS,
+    msg: msg
+  };
+};
+
+export const countryAddFailed = errors => {
+  return {
+    type: actionTypes.COUNTRY_ADD_FAILED,
+    errors: errors
+  };
+};
+
 // COUNTRY EDIT
 export const countryEditOpen = countryID => {
   return dispatch => {
@@ -53,9 +85,7 @@ export const countryEditOpen = countryID => {
         dispatch(countryEditOpenSuccess(country.data));
       })
       .catch(err => {
-        console.log(err);
         dispatch(countryEditOpenFailed(err.response.data));
-        // dispatch(authActions.logout());
       });
   };
 };
@@ -87,7 +117,6 @@ export const countryEditSave = countryData => {
       })
       .catch(err => {
         dispatch(countryEditSaveFailed(err.response.data));
-        // dispatch(authActions.logout());
       });
   };
 };

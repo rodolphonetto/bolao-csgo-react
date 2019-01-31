@@ -8,10 +8,6 @@ import * as countryActions from "../../../../store/actions/index";
 import style from "./CountryItem.module.scss";
 
 const CountryItem = props => {
-  const onEditClick = e => {
-    props.countryEditOpen(props._id);
-  };
-
   return (
     <div className={style.CountryItem}>
       <span className={style.name}>{props.name}</span>
@@ -20,10 +16,7 @@ const CountryItem = props => {
         src={`${process.env.REACT_APP_URL_IMG}/${props.flag}`}
         alt={`Bandeira da ${props.name}`}
       />
-      <Link
-        onClick={() => onEditClick(props._id)}
-        to={`/countries/edit-country/${props._id}`}
-      >
+      <Link to={`/countries/edit-country/${props._id}`}>
         <button className={style.edit}>Editar</button>
       </Link>
       <button className={style.remove}>Remover</button>

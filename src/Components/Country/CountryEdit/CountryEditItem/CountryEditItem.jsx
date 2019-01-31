@@ -11,8 +11,8 @@ import InputError from "../../../Layout/InputError";
 import ConfirmButton from "../../../Layout/ConfirmButton";
 
 class CountryEdit extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       name: ""
     };
@@ -53,12 +53,12 @@ class CountryEdit extends Component {
             <Input
               type="text"
               name="name"
-              value={this.state.name}
+              value={this.state.name} //funcionando
               changed={this.onChangeHandler}
             />
-            {/* {this.props.errors.name && (
+            {this.props.errors.name && (
               <InputError>{this.props.errors.name}</InputError>
-            )} */}
+            )}
           </div>
           <div className={style.inputGroup}>
             <Label>Bandeira</Label>
@@ -74,8 +74,8 @@ class CountryEdit extends Component {
 
 const mapStateToProps = state => {
   return {
-    country: state.country.country,
-    erros: state.country.errors
+    edited: state.country.edited,
+    errors: state.country.errors
   };
 };
 
