@@ -12,8 +12,6 @@ export const LOGIN_FAILED = "LOGIN_FAILED";
 export const LOGOUT = "LOGOUT";
 
 // Country Actions
-export const COUNTRY_CLICK = "COUNTRY_CLICK";
-
 export const COUNTRY_OPEN = "COUNTRY_OPEN";
 export const COUNTRY_LOADING = "COUNTRY_LOADING";
 export const COUNTRY_OPEN_SUCCESS = "COUNTRY_OPEN_SUCCESS";

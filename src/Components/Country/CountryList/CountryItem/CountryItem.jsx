@@ -1,14 +1,14 @@
 import React from "react";
 
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
-import * as countryActions from "../../../store/actions/index";
+import * as countryActions from "../../../../store/actions/index";
 
 import style from "./CountryItem.module.scss";
 
 const CountryItem = props => {
   const onEditClick = e => {
-    e.persist();
     props.countryEditOpen(props._id);
   };
 
@@ -20,9 +20,12 @@ const CountryItem = props => {
         src={`${process.env.REACT_APP_URL_IMG}/${props.flag}`}
         alt={`Bandeira da ${props.name}`}
       />
-      <button onClick={e => onEditClick(e)} className={style.edit}>
-        Editar
-      </button>
+      <Link
+        onClick={() => onEditClick(props._id)}
+        to={`/countries/edit-country/${props._id}`}
+      >
+        <button className={style.edit}>Editar</button>
+      </Link>
       <button className={style.remove}>Remover</button>
     </div>
   );

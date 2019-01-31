@@ -16,7 +16,7 @@ const Landing = () => {
       <Route path="/signup" exact component={Signup} />
       <Route path="/logout" exact component={Logout} />
       <Route path="/dashboard" exact component={Dashboard} />
-      <Route path="/countries" exact component={Country} />
+      <Route path="/countries" component={Country} />
       <Route path="/" exact component={Login} />
     </div>
   );

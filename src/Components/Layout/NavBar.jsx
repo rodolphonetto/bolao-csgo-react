@@ -2,21 +2,14 @@ import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
-import * as Actions from "../../store/actions/index";
-
 import style from "./scss/NavBar.module.scss";
 
 const NavBar = props => {
-  const onCountryClick = e => {
-    e.preventDefault();
-    props.onCountryClick();
-  };
-
   return (
     <nav className={style.navbar}>
       <ul>
         {props.isAuthenticated && (
-          <Link onClick={e => onCountryClick(e)} to="/countries/">
+          <Link to="/countries">
             <li className={style.menuOption}>Países</li>
           </Link>
         )}
@@ -46,9 +39,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchtoProps = dispatch => {
-  return {
-    onCountryClick: () => dispatch(Actions.countryClick())
-  };
+  return {};
 };
 
 export default connect(

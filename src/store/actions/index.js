@@ -3,6 +3,5 @@ export { login, loginSuccess, logout } from "./auth";
 export {
   countryOpen,
   countryEditOpen,
-  countryEditSave,
-  countryClick
+  countryEditSave
 } from "./country";

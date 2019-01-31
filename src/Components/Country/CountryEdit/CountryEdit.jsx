@@ -1,90 +1,43 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import { connect } from "react-redux";
 
-import * as countryActions from "../../../store/actions/index";
+import * as Actions from "../../../store/actions/index";
 
-import style from "./CountryEdit.module.scss";
+import CountryEdit from "./CountryEditItem/CountryEditItem";
 
-import Label from "../../Layout/Label";
-import Input from "../../Layout/Input";
-import InputError from "../../Layout/InputError";
-import ConfirmButton from "../../Layout/ConfirmButton";
-
-class CountryEdit extends Component {
-  constructor() {
-    super();
-    this.state = {
-      name: ""
-    };
-  }
-
-  onSubmit = event => {
-    event.preventDefault();
-
-    const form = document.forms.namedItem("editCountry");
-
-    const countryData = new FormData(form);
-
-    this.props.onCountryEditSave(countryData);
-  };
-
-  onChangeHandler = event => {
-    this.setState({
-      [event.target.name]: event.target.value
-    });
-  };
-
+class CountryEditList extends PureComponent {
   componentWillMount() {
-    this.setState({
-      name: this.props.name
-    });
+    this.props.countryEditOpen(this.props.match.params._id);
+    console.log(this.props);
   }
 
   render() {
     return (
-      <div className={style.Form}>
-        <form
-          onSubmit={this.onSubmit}
-          name="editCountry"
-          encType="multipart/form-data"
-        >
-          <div className={style.inputGroup}>
-            <Label>Nome</Label>
-            <Input
-              type="text"
-              name="name"
-              value={this.state.name}
-              changed={this.onChangeHandler}
-            />
-            {this.props.errors.name && (
-              <InputError>{this.props.errors.name}</InputError>
-            )}
-          </div>
-          <div className={style.inputGroup}>
-            <Label>Bandeira</Label>
-            <Input name="image" type="file" />
-          </div>
-          <input type="hidden" name="countryID" value={this.props.countryID} />
-          <ConfirmButton>Atualizar</ConfirmButton>
-        </form>
+      <div>
+        <CountryEdit
+          name={this.props.country.name}
+          countryID={this.props.country._id}
+        />
       </div>
     );
   }
 }
 
-const mapStateToProps = state => ({
-  country: state.country.country,
-  errors: state.country.errors
-});
+const mapStateToProps = state => {
+  return {
+    isAuth: state.auth.isAuthenticated,
+    country: state.country.country,
+    erros: state.country.errors
+  };
+};
 
 const mapDispatchtoProps = dispatch => {
   return {
-    onCountryEditSave: countryData =>
-      dispatch(countryActions.countryEditSave(countryData))
+    countryEditOpen: countryID => dispatch(Actions.countryEditOpen(countryID))
   };
 };
 
 export default connect(
   mapStateToProps,
   mapDispatchtoProps
-)(CountryEdit);
+)(CountryEditList);

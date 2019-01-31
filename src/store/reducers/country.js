@@ -3,17 +3,12 @@ import * as actionTypes from "../actions/actionTypes";
 const initialState = {
   loading: false,
   countries: [],
-  country: null,
+  country: {},
   errors: {}
 };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case actionTypes.COUNTRY_CLICK:
-      return {
-        ...state,
-        country: null
-      };
     case actionTypes.COUNTRY_LOADING:
       return {
         ...state,
@@ -24,7 +19,8 @@ const reducer = (state = initialState, action) => {
         ...state,
         loading: false,
         countries: action.data,
-        errors: {}
+        errors: {},
+        country: {}
       };
     case actionTypes.COUNTRY_OPEN_FAILED:
       return {
@@ -47,7 +43,7 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        country: null,
+        country: {},
         countries: oldCountries.concat(action.country),
         errors: {}
       };

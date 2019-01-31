@@ -4,12 +4,6 @@ import * as authActions from "./index";
 import axios from "axios";
 
 // COUNTRY SELECTION
-export const countryClick = () => {
-  return {
-    type: actionTypes.COUNTRY_CLICK
-  };
-};
-
 export const countryOpen = () => {
   return dispatch => {
     dispatch(countryLoading());
@@ -19,6 +13,7 @@ export const countryOpen = () => {
         dispatch(countryOpenSuccess(countries.data));
       })
       .catch(err => {
+        console.log(err);
         dispatch(countryOpenFailed(err.response.data));
         dispatch(authActions.logout());
       });
@@ -54,8 +49,8 @@ export const countryEditOpen = countryID => {
       .get(
         `${process.env.REACT_APP_URL_START}/countries/edit-country/${countryID}`
       )
-      .then(countries => {
-        dispatch(countryEditOpenSuccess(countries.data));
+      .then(country => {
+        dispatch(countryEditOpenSuccess(country.data));
       })
       .catch(err => {
         console.log(err);
