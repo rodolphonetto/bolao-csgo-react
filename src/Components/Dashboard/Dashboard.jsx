@@ -4,6 +4,7 @@ import { Route } from "react-router-dom";
 
 import style from "./DashBoard.module.scss";
 
+import Spinner from "../Layout/Spinner";
 import NavBar from "../Layout/NavBar";
 import Logout from "../Login/Logout";
 import Country from "../Country/Country";
@@ -12,25 +13,39 @@ import CountryEdit from "../Country/CountryEdit/CountryEdit";
 class Dashboard extends Component {
   render() {
     return (
-      <div className={style.general}>
-        <NavBar />
-        <div className={style.panel}>
-          <Route
-            path={`${this.props.match.url}/countries`}
-            component={Country}
-          />
-          <Route
-            path={`${this.props.match.url}/edit-country/:id`}
-            component={CountryEdit}
-          />
+      <>
+        <div className={style.general}>
+          <NavBar />
+          {this.props.loading && <Spinner />}
+          {!this.props.isAuth ? (
+            <h1>Você não está autorizado</h1>
+          ) : (
+            this.props.isAuth && (
+              <>
+                <div className={style.panel}>
+                  <Route
+                    path={`${this.props.match.url}/countries`}
+                    component={Country}
+                  />
+                  <Route
+                    path={`${this.props.match.url}/edit-country/:id`}
+                    component={CountryEdit}
+                  />
+                </div>
+                <Route path="/logout" exact component={Logout} />
+              </>
+            )
+          )}
         </div>
-        <Route path="/logout" exact component={Logout} />
-      </div>
+      </>
     );
   }
 }
 
-const mapStateToProps = state => ({});
+const mapStateToProps = state => ({
+  isAuth: state.auth.isAuthenticated,
+  lading: state.country.loading
+});
 
 const mapDispatchToProps = {};
 

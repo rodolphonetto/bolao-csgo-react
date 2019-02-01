@@ -15,7 +15,7 @@ class CountryEditList extends Component {
 
   componentDidUpdate() {
     if (this.props.edited) {
-      this.props.history.push("/countries");
+      this.props.history.goBack();
     }
   }
 

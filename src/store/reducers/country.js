@@ -35,7 +35,8 @@ const reducer = (state = initialState, action) => {
         ...state,
         loading: false,
         msg: action.msg,
-        errors: {}
+        errors: {},
+        edited: true
       };
     case actionTypes.COUNTRY_ADD_FAILED:
       return {
@@ -71,6 +72,24 @@ const reducer = (state = initialState, action) => {
         edited: true
       };
     case actionTypes.COUNTRY_EDIT_SAVE_FAILED:
+      return {
+        ...state,
+        loading: false,
+        errors: action.errors,
+        edited: false
+      };
+    case actionTypes.COUNTRY_DEL_SUCCESS:
+      const newCountries = [...state.countries].filter(
+        country => country._id !== action.country
+      );
+      return {
+        ...state,
+        loading: false,
+        country: {},
+        countries: newCountries,
+        errors: {}
+      };
+    case actionTypes.COUNTRY_DEL_FAILED:
       return {
         ...state,
         loading: false,

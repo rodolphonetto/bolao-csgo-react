@@ -15,7 +15,6 @@ export const countryOpen = () => {
       .catch(err => {
         console.log(err);
         dispatch(countryOpenFailed(err.response.data));
-        dispatch(authActions.logout());
       });
   };
 };
@@ -131,6 +130,42 @@ export const countryEditSaveSuccess = country => {
 export const countryEditSaveFailed = errors => {
   return {
     type: actionTypes.COUNTRY_EDIT_SAVE_FAILED,
+    loading: false,
+    errors: errors
+  };
+};
+
+// COUNTRY DELETE
+
+export const countryDel = country => {
+  return dispatch => {
+    dispatch(countryLoading());
+    axios
+      .put(
+        `${process.env.REACT_APP_URL_START}/countries/del-country/${country}`,
+        country
+      )
+      .then(success => {
+        console.log(success);
+        dispatch(countryDelSuccess(success.data.msg, success.data.countryID));
+      })
+      .catch(err => {
+        dispatch(countryDelFailed(err.response.data));
+      });
+  };
+};
+
+export const countryDelSuccess = (msg, countryID) => {
+  return {
+    type: actionTypes.COUNTRY_DEL_SUCCESS,
+    msg: msg,
+    country: countryID
+  };
+};
+
+export const countryDelFailed = errors => {
+  return {
+    type: actionTypes.COUNTRY_DEL_FAILED,
     loading: false,
     errors: errors
   };

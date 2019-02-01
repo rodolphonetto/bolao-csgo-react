@@ -18,6 +18,13 @@ class CountryEdit extends Component {
     };
   }
 
+  componentDidUpdate() {
+    console.log("teste");
+    if (this.props.edited) {
+      this.props.history.goBack();
+    }
+  }
+
   onSubmit = event => {
     event.preventDefault();
 
@@ -44,7 +51,7 @@ class CountryEdit extends Component {
             encType="multipart/form-data"
           >
             <div className={style.inputGroup}>
-              <Label>Nome</Label>
+              <Label type="form">Nome</Label>
               <Input
                 type="text"
                 name="name"
@@ -56,13 +63,13 @@ class CountryEdit extends Component {
               )}
             </div>
             <div className={style.inputGroup}>
-              <Label>Bandeira</Label>
+              <Label type="form">Bandeira</Label>
               <Input name="image" type="file" />
               {this.props.errors.file && (
                 <InputError>{this.props.errors.file}</InputError>
               )}
             </div>
-            <ConfirmButton>Atualizar</ConfirmButton>
+            <ConfirmButton>Confirmar</ConfirmButton>
           </form>
         </div>
       </div>
@@ -72,6 +79,7 @@ class CountryEdit extends Component {
 
 const mapStateToProps = state => {
   return {
+    edited: state.country.edited,
     errors: state.country.errors
   };
 };

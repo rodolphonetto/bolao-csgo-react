@@ -4,6 +4,7 @@
   align-self: flex-start;
 }
 .inputGroup {
+  color: black;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-areas:
@@ -11,10 +12,12 @@
     "- msg";
   margin-bottom: 40px;
 }
+
 .Form {
+  color: black;
   display: grid;
   align-self: flex-start;
   justify-self: center;
-  background: rgba(22, 22, 22, 0.486);
+  background: white;
   padding: 40px;
 }

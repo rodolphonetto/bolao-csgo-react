@@ -5,5 +5,6 @@ export {
   countryEditOpen,
   countryEditOpenSuccess,
   countryEditSave,
-  countryAdd
+  countryAdd,
+  countryDel
 } from "./country";
