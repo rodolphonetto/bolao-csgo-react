@@ -16,7 +16,7 @@ const CountryItem = props => {
         src={`${process.env.REACT_APP_URL_IMG}/${props.flag}`}
         alt={`Bandeira da ${props.name}`}
       />
-      <Link to={`/countries/edit-country/${props._id}`}>
+      <Link to={`${props.url}/edit-country/${props._id}`}>
         <button className={style.edit}>Editar</button>
       </Link>
       <button className={style.remove}>Remover</button>

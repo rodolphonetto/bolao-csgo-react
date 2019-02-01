@@ -12,6 +12,9 @@
 }
 
 .panel {
+  display: grid;
+  align-content: center;
+  padding: 20px;
   justify-self: center;
   align-self: center;
   position: relative;

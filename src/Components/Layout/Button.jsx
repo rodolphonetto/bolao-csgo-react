@@ -2,14 +2,23 @@ import React from "react";
 import style from "./scss/Button.module.scss";
 
 const Button = props => {
-  let classe = null;
+  let classe = [];
 
   if (props.type === "ok") {
-    classe = style.ok;
-  } else if (props.type === "remove") {
+    classe.push(style.ok);
+  } 
+  
+  if (props.type === "remove") {
+    classe.push(style.remove);
+  } 
+  
+  if (props.controls === "yes") {
+    classe.push(style.controls);
   }
 
-  return <button className={classe}>{props.children}</button>;
+  const finalClass = classe.join(" ");
+
+  return <button className={finalClass}>{props.children}</button>;
 };
 
 export default Button;

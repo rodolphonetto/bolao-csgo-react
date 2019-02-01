@@ -1,9 +1,9 @@
 .ok {
   justify-self: center;
   align-self: center;
-  background: none;
+  background: green;
   font-weight: bold;
-  font-size: 1.2rem;
+  font-size: 1rem;
   line-height: 1;
   color: white;
   text-align: center;
@@ -14,6 +14,10 @@
 }
 
 .ok:hover {
+  font-size: 1.2rem;
   cursor: pointer;
-  background-color: green;
+}
+
+.controls {
+  margin-right: 15px;
 }

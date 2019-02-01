@@ -49,7 +49,7 @@ class CountryEdit extends Component {
           encType="multipart/form-data"
         >
           <div className={style.inputGroup}>
-            <Label>Nome</Label>
+            <Label type="form">Nome</Label>
             <Input
               type="text"
               name="name"
@@ -61,7 +61,7 @@ class CountryEdit extends Component {
             )}
           </div>
           <div className={style.inputGroup}>
-            <Label>Bandeira</Label>
+            <Label type="form">Bandeira</Label>
             <Input name="image" type="file" />
           </div>
           <input type="hidden" name="countryID" value={this.props.countryID} />

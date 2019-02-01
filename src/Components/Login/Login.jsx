@@ -67,7 +67,9 @@ class Login extends Component {
           <h1>Faça o Login</h1>
           <form onSubmit={this.onSubmit}>
             <div className={style.inputGroup}>
-              <Label htmlFor="username">Nome de Usuario</Label>
+              <Label type="login" htmlFor="username">
+                Nome de Usuario
+              </Label>
               <Input
                 type="text"
                 name="username"
@@ -76,7 +78,9 @@ class Login extends Component {
               />
             </div>
             <div className={style.inputGroup}>
-              <Label htmlFor="password">Senha</Label>
+              <Label type="login" htmlFor="password">
+                Senha
+              </Label>
               <Input
                 type="password"
                 name="password"

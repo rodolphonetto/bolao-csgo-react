@@ -16,17 +16,25 @@ class CountryList extends Component {
 
   render() {
     const countries = this.props.countries.map((country, index) => {
-      return <CountryItem key={index} {...country} />;
+      return (
+        <CountryItem url={this.props.match.url} key={index} {...country} />
+      );
     });
 
     return (
       <>
-        {this.props.isAuth && (
-          <Link to="/countries/add-country">
-            <Button type="ok">Novo Pais</Button>
-          </Link>
-        )}
-        <div className={style.countries}>{countries}</div>
+        <div className={style.wrapper}>
+          <div className={style.countries}>{countries}</div>
+          {this.props.isAuth && (
+            <div className={style.controlls}>
+              <Link to="/countries/add-country">
+                <Button type="ok" controls="yes">
+                  Novo País
+                </Button>
+              </Link>
+            </div>
+          )}
+        </div>
       </>
     );
   }
