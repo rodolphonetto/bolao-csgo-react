@@ -1,5 +1,4 @@
 import * as actionTypes from "./actionTypes";
-import * as authActions from "./index";
 
 import axios from "axios";
 

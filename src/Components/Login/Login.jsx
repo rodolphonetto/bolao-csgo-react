@@ -3,8 +3,7 @@ import { connect } from "react-redux";
 
 import * as authActions from "../../store/actions/index";
 
-import Label from "../Layout/Label";
-import Input from "../Layout/Input";
+import InputGroup from "../Layout/InputGroup/InputGroup";
 import ConfirmButton from "../Layout/ConfirmButton";
 import Spinner from "../Layout/Spinner";
 import ModalMessage from "../Layout/ModalMessage";
@@ -66,28 +65,24 @@ class Login extends Component {
         <div className={style.Form}>
           <h1>Faça o Login</h1>
           <form onSubmit={this.onSubmit}>
-            <div className={style.inputGroup}>
-              <Label type="login" htmlFor="username">
-                Nome de Usuario
-              </Label>
-              <Input
-                type="text"
-                name="username"
-                value={this.state.username}
-                changed={this.onChangeHandler}
-              />
-            </div>
-            <div className={style.inputGroup}>
-              <Label type="login" htmlFor="password">
-                Senha
-              </Label>
-              <Input
-                type="password"
-                name="password"
-                value={this.state.password}
-                changed={this.onChangeHandler}
-              />
-            </div>
+            <InputGroup
+              label="Nome de Usuario:"
+              Labeltype="login"
+              htmlFor="username"
+              type="text"
+              name="username"
+              value={this.state.username}
+              changed={this.onChangeHandler}
+            />
+            <InputGroup
+              label="Senha"
+              Labeltype="login"
+              htmlFor="password"
+              type="password"
+              name="password"
+              value={this.state.password}
+              changed={this.onChangeHandler}
+            />
             {this.props.loading === false && (
               <ConfirmButton>Entrar</ConfirmButton>
             )}

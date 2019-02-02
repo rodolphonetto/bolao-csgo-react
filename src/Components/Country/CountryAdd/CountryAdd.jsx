@@ -5,9 +5,7 @@ import * as countryActions from "../../../store/actions/index";
 
 import style from "./CountryAdd.module.scss";
 
-import Label from "../../Layout/Label";
-import Input from "../../Layout/Input";
-import InputError from "../../Layout/InputError";
+import InputGroup from "../../Layout/InputGroup/InputGroup";
 import ConfirmButton from "../../Layout/ConfirmButton";
 
 class CountryEdit extends Component {
@@ -19,7 +17,6 @@ class CountryEdit extends Component {
   }
 
   componentDidUpdate() {
-    console.log("teste");
     if (this.props.edited) {
       this.props.history.goBack();
     }
@@ -50,25 +47,26 @@ class CountryEdit extends Component {
             name="addCountry"
             encType="multipart/form-data"
           >
-            <div className={style.inputGroup}>
-              <Label type="form">Nome</Label>
-              <Input
-                type="text"
-                name="name"
-                value={this.state.name}
-                changed={this.onChangeHandler}
-              />
-              {this.props.errors.name && (
-                <InputError>{this.props.errors.name}</InputError>
-              )}
-            </div>
-            <div className={style.inputGroup}>
-              <Label type="form">Bandeira</Label>
-              <Input name="image" type="file" />
-              {this.props.errors.file && (
-                <InputError>{this.props.errors.file}</InputError>
-              )}
-            </div>
+            <InputGroup
+              label="Nome:"
+              Labeltype="form"
+              htmlFor="name"
+              type="text"
+              name="name"
+              value={this.state.name}
+              changed={this.onChangeHandler}
+              errors={this.props.errors.name}
+              errosMsg={this.props.errors.name}
+            />
+            <InputGroup
+              label="Bandeira:"
+              Labeltype="form"
+              htmlFor="image"
+              type="file"
+              name="image"
+              errors={this.props.errors.file}
+              errosMsg={this.props.errors.file}
+            />
             <ConfirmButton>Confirmar</ConfirmButton>
           </form>
         </div>

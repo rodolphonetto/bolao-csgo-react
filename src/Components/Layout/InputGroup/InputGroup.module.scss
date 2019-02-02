@@ -1,0 +1,42 @@
+.inputs {
+  border: 1px solid black;
+  padding: 10px;
+  border-radius: 5px;
+  max-width: 350px;
+  font-family: "Sarabun", sans-serif;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.hasErrors {
+  border: 2px solid rgb(241, 52, 52);
+}
+
+.errorMessage {
+  font-size: 0.9rem;
+  margin-top: 3px;
+  color: rgb(241, 52, 52);
+  grid-area: msg;
+}
+
+.login {
+  align-self: center;
+  font-size: 1.2rem;
+  color: white;
+}
+
+.form {
+  align-self: center;
+  font-size: 1.2rem;
+  color: black;
+}
+
+.inputGroup {
+  color: black;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    "label input"
+    "- msg";
+  margin-bottom: 40px;
+}

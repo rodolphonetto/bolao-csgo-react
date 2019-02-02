@@ -11,7 +11,7 @@ const CountryItem = props => {
   const onDelete = countryID => {
     props.countryDel(countryID);
   };
-
+  // TODO Ajustar arquivo que não está apagando
   return (
     <div className={style.CountryItem}>
       <span className={style.name}>{props.name}</span>
