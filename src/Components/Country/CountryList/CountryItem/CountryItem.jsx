@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 
 import * as Actions from "../../../../store/actions/index";
 
+import Button from "../../../Layout/Button";
+
 import style from "./CountryItem.module.scss";
 
 const CountryItem = props => {
@@ -20,11 +22,11 @@ const CountryItem = props => {
         alt={`Bandeira da ${props.name}`}
       />
       <Link to={`${props.url}/edit-country/${props._id}`}>
-        <button className={style.edit}>Editar</button>
+        <Button btStyle="edit">Editar</Button>
       </Link>
-      <button onClick={() => onDelete(props._id)} className={style.remove}>
+      <Button clicked={() => onDelete(props._id)} btStyle="remove">
         Excluir
-      </button>
+      </Button>
     </div>
   );
 };

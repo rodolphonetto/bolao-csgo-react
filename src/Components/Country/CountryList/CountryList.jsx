@@ -28,9 +28,7 @@ class CountryList extends Component {
           {this.props.isAuth && (
             <div className={style.controlls}>
               <Link to={`${this.props.match.url}/add-country`}>
-                <Button btStyle="ok" controls="yes">
-                  Novo País
-                </Button>
+                <Button btStyle="ok">Novo País</Button>
               </Link>
             </div>
           )}

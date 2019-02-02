@@ -3,12 +3,9 @@ import { connect } from "react-redux";
 
 import * as authActions from "../../store/actions/index";
 
+import Form from "../Layout/Form/Form";
 import InputGroup from "../Layout/InputGroup/InputGroup";
-import Button from "../Layout/Button";
-import Spinner from "../Layout/Spinner";
 import ModalMessage from "../Layout/ModalMessage";
-
-import style from "./Login.module.scss";
 
 class Login extends Component {
   constructor() {
@@ -62,39 +59,34 @@ class Login extends Component {
 
     return (
       !this.props.isAuthenticated && (
-        <div className={style.Form}>
-          <h1>Faça o Login</h1>
-          <form onSubmit={this.onSubmit}>
-            <InputGroup
-              label="Nome de Usuario:"
-              Labeltype="login"
-              htmlFor="username"
-              type="text"
-              name="username"
-              value={this.state.username}
-              changed={this.onChangeHandler}
-            />
-            <InputGroup
-              label="Senha"
-              Labeltype="login"
-              htmlFor="password"
-              type="password"
-              name="password"
-              value={this.state.password}
-              changed={this.onChangeHandler}
-            />
-            {this.props.loading === false && (
-              <Button btStyle="formBlack">Entrar</Button>
-            )}
-            {this.props.loading === true && <Spinner />}
-          </form>
-          {message && <ModalMessage type="error">{message}</ModalMessage>}
-          {this.props.isAuthenticated && (
-            <ModalMessage type="ok">
-              Login efetuado com sucesso, direcionando...
-            </ModalMessage>
-          )}
-        </div>
+        <Form
+          name="login"
+          sendAction="onLogin"
+          formStyle="formBlack"
+          title="Faça o Login"
+          btStyle="formBlack"
+          btText="Entrar"
+          error={message}
+        >
+          <InputGroup
+            label="Nome de Usuario:"
+            Labeltype="login"
+            htmlFor="username"
+            type="text"
+            name="username"
+            value={this.state.username}
+            changed={this.onChangeHandler}
+          />
+          <InputGroup
+            label="Senha"
+            Labeltype="login"
+            htmlFor="password"
+            type="password"
+            name="password"
+            value={this.state.password}
+            changed={this.onChangeHandler}
+          />
+        </Form>
       )
     );
   }

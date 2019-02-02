@@ -1,12 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import * as countryActions from "../../../store/actions/index";
-
 import style from "./CountryAdd.module.scss";
 
+import Form from "../../Layout/Form/Form";
 import InputGroup from "../../Layout/InputGroup/InputGroup";
-import Button from "../../Layout/Button";
 
 class CountryEdit extends Component {
   constructor(props) {
@@ -22,16 +20,6 @@ class CountryEdit extends Component {
     }
   }
 
-  onSubmit = event => {
-    event.preventDefault();
-
-    const form = document.forms.namedItem("addCountry");
-
-    const countryData = new FormData(form);
-
-    this.props.countryAdd(countryData);
-  };
-
   onChangeHandler = event => {
     this.setState({
       [event.target.name]: event.target.value
@@ -41,35 +29,35 @@ class CountryEdit extends Component {
   render() {
     return (
       <div className={style.countryEdit}>
-        <div className={style.Form}>
-          <form
-            onSubmit={this.onSubmit}
-            name="addCountry"
-            encType="multipart/form-data"
-          >
-            <InputGroup
-              label="Nome:"
-              Labeltype="form"
-              htmlFor="name"
-              type="text"
-              name="name"
-              value={this.state.name}
-              changed={this.onChangeHandler}
-              errors={this.props.errors.name}
-              errosMsg={this.props.errors.name}
-            />
-            <InputGroup
-              label="Bandeira:"
-              Labeltype="form"
-              htmlFor="image"
-              type="file"
-              name="image"
-              errors={this.props.errors.file}
-              errosMsg={this.props.errors.file}
-            />
-            <Button btStyle="formWhite">Confiaasdarmar</Button>
-          </form>
-        </div>
+        <Form
+          name="addCountry"
+          title="Adicionar País"
+          formStyle="formWhite"
+          btStyle="formWhite"
+          btText="Adicionar"
+          sendAction="countryAdd"
+        >
+          <InputGroup
+            label="Nome:"
+            Labeltype="form"
+            htmlFor="name"
+            type="text"
+            name="name"
+            value={this.state.name}
+            changed={this.onChangeHandler}
+            errors={this.props.errors.name}
+            errosMsg={this.props.errors.name}
+          />
+          <InputGroup
+            label="Bandeira:"
+            Labeltype="form"
+            htmlFor="image"
+            type="file"
+            name="image"
+            errors={this.props.errors.file}
+            errosMsg={this.props.errors.file}
+          />
+        </Form>
       </div>
     );
   }
@@ -82,13 +70,4 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchtoProps = dispatch => {
-  return {
-    countryAdd: countryData => dispatch(countryActions.countryAdd(countryData))
-  };
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchtoProps
-)(CountryEdit);
+export default connect(mapStateToProps)(CountryEdit);

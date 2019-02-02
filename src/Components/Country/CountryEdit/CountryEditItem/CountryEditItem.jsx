@@ -6,6 +6,7 @@ import * as countryActions from "../../../../store/actions/index";
 import style from "./CountryEditItem.module.scss";
 
 import InputGroup from "../../../Layout/InputGroup/InputGroup";
+import Form from "../../../Layout/Form/Form";
 import Button from "../../../Layout/Button";
 
 class CountryEdit extends Component {
@@ -40,34 +41,34 @@ class CountryEdit extends Component {
 
   render() {
     return (
-      <div className={style.Form}>
-        <form
-          onSubmit={this.onSubmit}
-          name="editCountry"
-          encType="multipart/form-data"
-        >
-          <InputGroup
-            label="Nome:"
-            Labeltype="form"
-            htmlFor="name"
-            type="text"
-            name="name"
-            value={this.state.name}
-            changed={this.onChangeHandler}
-            errors={this.props.errors.name}
-            errosMsg={this.props.errors.name}
-          />
-          <InputGroup
-            label="Bandeira:"
-            Labeltype="form"
-            htmlFor="image"
-            type="file"
-            name="image"
-          />
-          <input type="hidden" name="countryID" value={this.props.countryID} />
-          <Button btStyle="formWhite">Atualizar</Button>
-        </form>
-      </div>
+      <Form
+        name="editCountry"
+        sendAction="onCountryEditSave"
+        formStyle="formWhite"
+        title="Editar Páis"
+        btStyle="formWhite"
+        btText='Editar'
+      >
+        <InputGroup
+          label="Nome:"
+          Labeltype="form"
+          htmlFor="name"
+          type="text"
+          name="name"
+          value={this.state.name}
+          changed={this.onChangeHandler}
+          errors={this.props.errors.name}
+          errosMsg={this.props.errors.name}
+        />
+        <InputGroup
+          label="Bandeira:"
+          Labeltype="form"
+          htmlFor="image"
+          type="file"
+          name="image"
+        />
+        <input type="hidden" name="countryID" value={this.props.countryID} />
+      </Form>
     );
   }
 }

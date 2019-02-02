@@ -1,0 +1,23 @@
+.formBlack {
+  display: grid;
+  max-width: 700px;
+  background: rgba(22, 22, 22, 0.486);
+  padding: 40px;
+  margin: 0 auto;
+}
+
+.formWhite {
+  border-radius: 5px;
+  color: black;
+  display: grid;
+  align-self: flex-start;
+  justify-self: center;
+  min-width: 700px;
+  background: white;
+  padding: 40px;
+  box-shadow: 0px 0px 35px -12px rgba(0, 0, 0, 1);
+
+  h1 {
+    color: black;
+  }
+}
