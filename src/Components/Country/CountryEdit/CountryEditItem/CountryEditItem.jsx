@@ -3,11 +3,8 @@ import { connect } from "react-redux";
 
 import * as countryActions from "../../../../store/actions/index";
 
-import style from "./CountryEditItem.module.scss";
-
 import InputGroup from "../../../Layout/InputGroup/InputGroup";
 import Form from "../../../Layout/Form/Form";
-import Button from "../../../Layout/Button";
 
 class CountryEdit extends Component {
   constructor(props) {
@@ -47,7 +44,7 @@ class CountryEdit extends Component {
         formStyle="formWhite"
         title="Editar Páis"
         btStyle="formWhite"
-        btText='Editar'
+        btText="Editar"
       >
         <InputGroup
           label="Nome:"
@@ -76,7 +73,8 @@ class CountryEdit extends Component {
 const mapStateToProps = state => {
   return {
     edited: state.country.edited,
-    errors: state.country.errors
+    errors: state.country.errors,
+    loading: state.country.loading
   };
 };
 

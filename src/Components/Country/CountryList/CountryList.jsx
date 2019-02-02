@@ -6,6 +6,7 @@ import * as Actions from "../../../store/actions/index";
 
 import style from "./CountryList.module.scss";
 
+import Spinner from "../../Layout/Spinner";
 import CountryItem from "./CountryItem/CountryItem";
 import Button from "../../Layout/Button";
 
@@ -21,7 +22,9 @@ class CountryList extends Component {
       );
     });
 
-    return (
+    return this.props.loading ? (
+      <Spinner />
+    ) : (
       <>
         <div className={style.wrapper}>
           <div className={style.countries}>{countries}</div>
@@ -41,7 +44,8 @@ class CountryList extends Component {
 const mapStateToProps = state => {
   return {
     isAuth: state.auth.isAuthenticated,
-    countries: state.country.countries
+    countries: state.country.countries,
+    loading: state.country.loading
   };
 };
 

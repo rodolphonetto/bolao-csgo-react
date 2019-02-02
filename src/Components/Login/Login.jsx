@@ -1,11 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import * as authActions from "../../store/actions/index";
-
+import Spinner from "../Layout/Spinner";
 import Form from "../Layout/Form/Form";
 import InputGroup from "../Layout/InputGroup/InputGroup";
-import ModalMessage from "../Layout/ModalMessage";
 
 class Login extends Component {
   constructor() {
@@ -57,37 +55,37 @@ class Login extends Component {
       message = this.props.errors.wrongPassword;
     }
 
-    return (
-      !this.props.isAuthenticated && (
-        <Form
-          name="login"
-          sendAction="onLogin"
-          formStyle="formBlack"
-          title="Faça o Login"
-          btStyle="formBlack"
-          btText="Entrar"
-          error={message}
-        >
-          <InputGroup
-            label="Nome de Usuario:"
-            Labeltype="login"
-            htmlFor="username"
-            type="text"
-            name="username"
-            value={this.state.username}
-            changed={this.onChangeHandler}
-          />
-          <InputGroup
-            label="Senha"
-            Labeltype="login"
-            htmlFor="password"
-            type="password"
-            name="password"
-            value={this.state.password}
-            changed={this.onChangeHandler}
-          />
-        </Form>
-      )
+    return this.props.loading ? (
+      <Spinner />
+    ) : (
+      <Form
+        name="login"
+        sendAction="onLogin"
+        formStyle="formBlack"
+        title="Faça o Login"
+        btStyle="formBlack"
+        btText="Entrar"
+        error={message}
+      >
+        <InputGroup
+          label="Nome de Usuario:"
+          Labeltype="login"
+          htmlFor="username"
+          type="text"
+          name="username"
+          value={this.state.username}
+          changed={this.onChangeHandler}
+        />
+        <InputGroup
+          label="Senha"
+          Labeltype="login"
+          htmlFor="password"
+          type="password"
+          name="password"
+          value={this.state.password}
+          changed={this.onChangeHandler}
+        />
+      </Form>
     );
   }
 }
@@ -99,14 +97,4 @@ const mapStateToProps = state => {
     errors: state.auth.errors
   };
 };
-
-const mapDispatchtoProps = dispatch => {
-  return {
-    onLogin: userData => dispatch(authActions.login(userData))
-  };
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchtoProps
-)(Login);
+export default connect(mapStateToProps)(Login);

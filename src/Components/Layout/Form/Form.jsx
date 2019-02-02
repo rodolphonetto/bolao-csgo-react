@@ -23,6 +23,12 @@ class Form extends Component {
     if (this.props.sendAction === "onCountryEditSave") {
       this.props.onCountryEditSave(Data);
     }
+    if (this.props.sendAction === "onLogin") {
+      this.props.onLogin(Data);
+    }
+    if (this.props.sendAction === "onSignup") {
+      this.props.onSignup(Data);
+    }
   };
 
   render() {
@@ -59,7 +65,9 @@ const mapDispatchtoProps = dispatch => {
   return {
     countryAdd: countryData => dispatch(Actions.countryAdd(countryData)),
     onCountryEditSave: countryData =>
-      dispatch(Actions.countryEditSave(countryData))
+      dispatch(Actions.countryEditSave(countryData)),
+    onLogin: userData => dispatch(Actions.login(userData)),
+    onSignup: newUser => dispatch(Actions.singup(newUser))
   };
 };
 

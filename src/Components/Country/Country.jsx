@@ -20,7 +20,6 @@ class Country extends Component {
     return (
       <>
         {!this.props.isAuth && <h1>Você não está autorizado</h1>}
-        {this.props.loading && <Spinner />}
         <Route path={`${this.props.match.url}`} exact component={CountryList} />
         <Route
           path={`${this.props.match.url}/edit-country/:_id`}
@@ -42,11 +41,4 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchtoProps = dispatch => {
-  return {};
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchtoProps
-)(Country);
+export default connect(mapStateToProps)(Country);
