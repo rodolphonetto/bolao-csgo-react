@@ -6,7 +6,7 @@ import * as countryActions from "../../../store/actions/index";
 import style from "./CountryAdd.module.scss";
 
 import InputGroup from "../../Layout/InputGroup/InputGroup";
-import ConfirmButton from "../../Layout/ConfirmButton";
+import Button from "../../Layout/Button";
 
 class CountryEdit extends Component {
   constructor(props) {
@@ -67,7 +67,7 @@ class CountryEdit extends Component {
               errors={this.props.errors.file}
               errosMsg={this.props.errors.file}
             />
-            <ConfirmButton>Confirmar</ConfirmButton>
+            <Button btStyle="formWhite">Confiaasdarmar</Button>
           </form>
         </div>
       </div>

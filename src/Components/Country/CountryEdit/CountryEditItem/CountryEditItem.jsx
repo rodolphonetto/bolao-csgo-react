@@ -65,7 +65,7 @@ class CountryEdit extends Component {
             name="image"
           />
           <input type="hidden" name="countryID" value={this.props.countryID} />
-          <Button style="formWhite">Atualizar</Button>
+          <Button btStyle="formWhite">Atualizar</Button>
         </form>
       </div>
     );

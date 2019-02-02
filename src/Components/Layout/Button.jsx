@@ -4,25 +4,25 @@ import classnames from "classnames";
 import style from "./scss/Button.module.scss";
 
 const Button = props => {
-  let ok = "";
-  let remove = "";
-  let formBlack = "";
-  let formWhite = "";
-  let controls = "";
+  let ok = null
+  let remove = null
+  let formBlack = null
+  let formWhite = null
+  let controls = null
 
-  if (props.style === "ok") {
+  if (props.btStyle === "ok") {
     ok = style.ok;
   }
 
-  if (props.style === "remove") {
+  if (props.btStyle === "remove") {
     remove = style.remove;
   }
 
-  if (props.style === "formBlack") {
+  if (props.btStyle === "formBlack") {
     formBlack = style.formBlack;
   }
 
-  if (props.style === "formWhite") {
+  if (props.btStyle === "formWhite") {
     formWhite = style.formWhite;
   }
 

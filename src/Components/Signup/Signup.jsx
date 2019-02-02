@@ -97,7 +97,9 @@ class Signup extends Component {
             errors={this.props.errors.password}
             errosMsg={this.props.errors.password}
           />
-          {!this.props.loading && <Button style="formBlack">Cadastrar</Button>}
+          {!this.props.loading && (
+            <Button btStyle="formBlack">Cadastrar</Button>
+          )}
           {this.props.loading === true && <Spinner />}
         </form>
         {this.props.msg && (

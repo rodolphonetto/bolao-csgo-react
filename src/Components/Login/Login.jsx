@@ -84,7 +84,7 @@ class Login extends Component {
               changed={this.onChangeHandler}
             />
             {this.props.loading === false && (
-              <Button style="formBlack">Entrar</Button>
+              <Button btStyle="formBlack">Entrar</Button>
             )}
             {this.props.loading === true && <Spinner />}
           </form>
