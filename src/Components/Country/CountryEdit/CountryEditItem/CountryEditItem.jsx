@@ -6,7 +6,7 @@ import * as countryActions from "../../../../store/actions/index";
 import style from "./CountryEditItem.module.scss";
 
 import InputGroup from "../../../Layout/InputGroup/InputGroup";
-import ConfirmButton from "../../../Layout/ConfirmButton";
+import Button from "../../../Layout/Button";
 
 class CountryEdit extends Component {
   constructor(props) {
@@ -65,7 +65,7 @@ class CountryEdit extends Component {
             name="image"
           />
           <input type="hidden" name="countryID" value={this.props.countryID} />
-          <ConfirmButton>Atualizar</ConfirmButton>
+          <Button style="formWhite">Atualizar</Button>
         </form>
       </div>
     );

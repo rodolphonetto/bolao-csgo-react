@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import * as authActions from "../../store/actions/index";
 
 import InputGroup from "../Layout/InputGroup/InputGroup";
-import ConfirmButton from "../Layout/ConfirmButton";
+import Button from "../Layout/Button";
 import Spinner from "../Layout/Spinner";
 import ModalMessage from "../Layout/ModalMessage";
 
@@ -84,7 +84,7 @@ class Login extends Component {
               changed={this.onChangeHandler}
             />
             {this.props.loading === false && (
-              <ConfirmButton>Entrar</ConfirmButton>
+              <Button style="formBlack">Entrar</Button>
             )}
             {this.props.loading === true && <Spinner />}
           </form>

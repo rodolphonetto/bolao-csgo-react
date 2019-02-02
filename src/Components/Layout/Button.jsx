@@ -1,24 +1,40 @@
 import React from "react";
+import classnames from "classnames";
+
 import style from "./scss/Button.module.scss";
 
 const Button = props => {
-  let classe = [];
+  let ok = "";
+  let remove = "";
+  let formBlack = "";
+  let formWhite = "";
+  let controls = "";
 
-  if (props.type === "ok") {
-    classe.push(style.ok);
-  } 
-  
-  if (props.type === "remove") {
-    classe.push(style.remove);
-  } 
-  
-  if (props.controls === "yes") {
-    classe.push(style.controls);
+  if (props.style === "ok") {
+    ok = style.ok;
   }
 
-  const finalClass = classe.join(" ");
+  if (props.style === "remove") {
+    remove = style.remove;
+  }
 
-  return <button className={finalClass}>{props.children}</button>;
+  if (props.style === "formBlack") {
+    formBlack = style.formBlack;
+  }
+
+  if (props.style === "formWhite") {
+    formWhite = style.formWhite;
+  }
+
+  if (props.controls === true) {
+    controls = style.controls;
+  }
+
+  return (
+    <button className={classnames(ok, remove, formBlack, formWhite, controls)}>
+      {props.children}
+    </button>
+  );
 };
 
 export default Button;

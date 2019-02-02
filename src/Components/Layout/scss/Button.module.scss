@@ -21,3 +21,44 @@
 .controls {
   margin-right: 15px;
 }
+
+.formBlack {
+  display: block;
+  margin: 0 auto;
+  padding: 10px;
+  min-width: 200px;
+  background: black;
+  border: 1px solid white;
+  border-radius: 5px;
+  color: white;
+  font-family: "Sarabun", sans-serif;
+  font-size: 1.2rem;
+  transition: all 0.3s;
+}
+
+.formBlack:hover {
+  cursor: pointer;
+  background: white;
+  color: black;
+}
+
+.formWhite {
+  display: block;
+  margin: 0 auto;
+  padding: 10px;
+  min-width: 200px;
+  background: black;
+  border: 1px solid black;
+  border-radius: 5px;
+  color: white;
+  font-family: "Sarabun", sans-serif;
+  font-size: 1.2rem;
+  transition: all 0.3s;
+}
+
+.formWhite:hover {
+  cursor: pointer;
+  background: white;
+  color: black;
+  border: 1px solid black;
+}

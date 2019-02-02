@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import * as signupActions from "../../store/actions/index";
 
 import InputGroup from "../Layout/InputGroup/InputGroup";
-import ConfirmButton from "../Layout/ConfirmButton";
+import Button from "../Layout/Button";
 import ModalMessage from "../Layout/ModalMessage";
 import Spinner from "../Layout/Spinner";
 
@@ -97,7 +97,7 @@ class Signup extends Component {
             errors={this.props.errors.password}
             errosMsg={this.props.errors.password}
           />
-          {!this.props.loading && <ConfirmButton>Cadastrar</ConfirmButton>}
+          {!this.props.loading && <Button style="formBlack">Cadastrar</Button>}
           {this.props.loading === true && <Spinner />}
         </form>
         {this.props.msg && (

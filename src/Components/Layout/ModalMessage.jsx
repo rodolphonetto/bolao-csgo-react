@@ -1,4 +1,6 @@
 import React from "react";
+import classnames from "classnames";
+
 import style from "./scss/ModalMessage.module.scss";
 
 const ModalMessage = props => {
@@ -12,7 +14,7 @@ const ModalMessage = props => {
 
   return (
     <div>
-      <p className={classe}>{props.children}</p>
+      <p className={classnames(classe)}>{props.children}</p>
     </div>
   );
 };
