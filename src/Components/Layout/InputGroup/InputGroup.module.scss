@@ -15,7 +15,21 @@
 }
 
 .inputs:focus + .login {
-  color: red;
+  visibility: visible;
+  height: auto;
+  color: white;
+  transform: translate3d(5px, -70px, 0);
+  transition: all 0.4s;
+  margin-bottom: -30px;
+}
+
+.inputs:focus + .form {
+  visibility: visible;
+  height: auto;
+  color: black;
+  transform: translate3d(5px, -70px, 0);
+  transition: all 0.4s;
+  margin-bottom: -30px;
 }
 
 .hasErrors {
@@ -29,17 +43,21 @@
 }
 
 .login {
-  margin-bottom: 5px;
+  visibility: hidden;
+  height: 0;
   color: white;
   font-size: 0.9rem;
   font-weight: bold;
+  transform: translate3d(15px, -70px, 0);
 }
 
 .form {
-  align-self: center;
-  font-size: 1.2rem;
+  visibility: hidden;
+  height: 0;
   color: black;
-  margin-bottom: 10px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  transform: translate3d(15px, -70px, 0);
 }
 
 .inputGroup {
