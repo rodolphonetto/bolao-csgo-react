@@ -26,17 +26,18 @@ const InputGroup = props => {
 
   return (
     <div className={style.inputGroup}>
-      <label className={classnames(login, form)} htmlFor={props.htmlFor}>
-        {props.label}
-      </label>
       <input
         className={classnames(style.inputs, hasErrors)}
         type={props.type}
         name={props.name}
         value={props.value}
         onChange={props.changed}
+        placeholder={props.label}
       />
-      {props.errors && (
+      <label className={classnames(login, form)} htmlFor={props.htmlFor}>
+        {props.label}
+      </label>
+      {props.error && (
         <div className={style.errorMessage}>{props.errosMsg}</div>
       )}
     </div>

@@ -43,47 +43,47 @@ class Signup extends Component {
         btText="Confirmar"
       >
         <InputGroup
-          label="Nome de Usuario:"
+          label="Nome de Usuario"
           Labeltype="login"
           htmlFor="username"
           type="text"
           name="username"
           value={this.state.username}
           changed={this.onChangeHandler}
-          errors={this.props.errors.username}
+          error={this.props.errors.username}
           errosMsg={this.props.errors.username}
         />
         <InputGroup
-          label="Email:"
+          label="Email"
           Labeltype="login"
           htmlFor="email"
           type="text"
           name="email"
           value={this.state.email}
           changed={this.onChangeHandler}
-          errors={this.props.errors.email}
+          error={this.props.errors.email}
           errosMsg={this.props.errors.email}
         />
         <InputGroup
-          label="Senha:"
+          label="Senha"
           Labeltype="login"
           htmlFor="password"
           type="password"
           name="password"
           value={this.state.password}
           changed={this.onChangeHandler}
-          errors={this.props.errors.password}
+          error={this.props.errors.password}
           errosMsg={this.props.errors.password}
         />
         <InputGroup
-          label="Repetir Senha:"
+          label="Repetir Senha"
           Labeltype="login"
           htmlFor="password2"
           type="password"
           name="password2"
           value={this.state.password2}
           changed={this.onChangeHandler}
-          errors={this.props.errors.password}
+          error={this.props.errors.password}
           errosMsg={this.props.errors.password}
         />
       </Form>

@@ -55,6 +55,7 @@ class Form extends Component {
         onSubmit={this.onSubmit}
         name={this.props.name}
         encType="multipart/form-data"
+        autoComplete="off"
       >
         <div className={classnames(formWhite, formBlack)}>
           <h1>{this.props.title}</h1>

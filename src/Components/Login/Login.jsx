@@ -69,7 +69,7 @@ class Login extends Component {
         error={message}
       >
         <InputGroup
-          label="Nome de Usuario:"
+          label="Nome de Usuario"
           Labeltype="login"
           htmlFor="username"
           type="text"

@@ -6,6 +6,16 @@
   font-family: "Sarabun", sans-serif;
   font-size: 1.2rem;
   font-weight: bold;
+  align-self: center;
+}
+
+.inputs::placeholder {
+  color: rgb(192, 192, 192);
+  font-size: 1rem;
+}
+
+.inputs:focus + .login {
+  color: red;
 }
 
 .hasErrors {
@@ -16,27 +26,26 @@
   font-size: 0.9rem;
   margin-top: 3px;
   color: rgb(241, 52, 52);
-  grid-area: msg;
 }
 
 .login {
-  align-self: center;
-  font-size: 1.2rem;
+  margin-bottom: 5px;
   color: white;
+  font-size: 0.9rem;
+  font-weight: bold;
 }
 
 .form {
   align-self: center;
   font-size: 1.2rem;
   color: black;
+  margin-bottom: 10px;
 }
 
 .inputGroup {
   color: black;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-areas:
-    "label input"
-    "- msg";
-  margin-bottom: 40px;
+  grid-template-columns: 1fr;
+  margin-bottom: 30px;
+  align-self: center;
 }

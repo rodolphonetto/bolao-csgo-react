@@ -47,7 +47,7 @@ class CountryEdit extends Component {
         btText="Editar"
       >
         <InputGroup
-          label="Nome:"
+          label="Nome"
           Labeltype="form"
           htmlFor="name"
           type="text"

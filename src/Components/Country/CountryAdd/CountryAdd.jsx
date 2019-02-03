@@ -38,23 +38,23 @@ class CountryEdit extends Component {
           sendAction="countryAdd"
         >
           <InputGroup
-            label="Nome:"
+            label="Nome"
             Labeltype="form"
             htmlFor="name"
             type="text"
             name="name"
             value={this.state.name}
             changed={this.onChangeHandler}
-            errors={this.props.errors.name}
+            error={this.props.errors.name}
             errosMsg={this.props.errors.name}
           />
           <InputGroup
-            label="Bandeira:"
+            label="Bandeira"
             Labeltype="form"
             htmlFor="image"
             type="file"
             name="image"
-            errors={this.props.errors.file}
+            error={this.props.errors.file}
             errosMsg={this.props.errors.file}
           />
         </Form>
