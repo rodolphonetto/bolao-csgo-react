@@ -6,7 +6,7 @@ import setAuthToken from "./util/setAuthToken";
 import jwt_decode from "jwt-decode";
 import store from "./store";
 
-import Landing from "./Components/Layout/Landing";
+import Landing from "./Components/Landing/Landing";
 import DashBoard from "./Components/Dashboard/Dashboard";
 
 // Check token

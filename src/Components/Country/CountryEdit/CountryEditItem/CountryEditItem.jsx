@@ -42,7 +42,7 @@ class CountryEdit extends Component {
         name="editCountry"
         sendAction="onCountryEditSave"
         formStyle="formWhite"
-        title="Editar Páis"
+        title="Editar País"
         btStyle="formWhite"
         btText="Editar"
       >

@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 
 import * as Actions from "../../../store/actions/index";
 
-import ModalMessage from "../ModalMessage";
 import Button from "../Button";
 
 import classnames from "classnames";
@@ -34,12 +33,21 @@ class Form extends Component {
   render() {
     let formWhite = null;
     let formBlack = null;
+    let error = null;
+    let ok = null;
+
     if (this.props.formStyle === "formWhite") {
       formWhite = style.formWhite;
     }
 
     if (this.props.formStyle === "formBlack") {
       formBlack = style.formBlack;
+    }
+
+    if (this.props.msgType === "error") {
+      error = style.error;
+    } else if (this.props.msgType === "ok") {
+      ok = style.ok;
     }
 
     return (
@@ -53,7 +61,7 @@ class Form extends Component {
           {this.props.children}
           <Button btStyle={this.props.btStyle}>{this.props.btText}</Button>
           {this.props.error && (
-            <ModalMessage type="error">{this.props.error}</ModalMessage>
+            <p className={classnames(error, ok)}>{this.props.error}</p>
           )}
         </div>
       </form>

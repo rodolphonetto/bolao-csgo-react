@@ -65,6 +65,7 @@ class Login extends Component {
         title="Faça o Login"
         btStyle="formBlack"
         btText="Entrar"
+        msgType="error"
         error={message}
       >
         <InputGroup
