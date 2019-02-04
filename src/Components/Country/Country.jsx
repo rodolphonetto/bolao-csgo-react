@@ -5,7 +5,6 @@ import { connect } from "react-redux";
 import CountryList from "./CountryList/CountryList";
 import CountryEdit from "./CountryEdit/CountryEdit";
 import CountryAdd from "./CountryAdd/CountryAdd";
-
 class Country extends Component {
   componentDidUpdate() {
     if (!this.props.isAuth) {
@@ -32,6 +31,7 @@ class Country extends Component {
     );
   }
 }
+
 const mapStateToProps = state => {
   return {
     isAuth: state.auth.isAuthenticated,

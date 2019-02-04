@@ -1,19 +1,30 @@
 import * as actionTypes from "./actionTypes";
 
 import axios from "axios";
+import { decode } from "qss";
 
 // COUNTRY SELECTION
-export const countryOpen = () => {
+export const countryOpen = data => {
   return dispatch => {
+    let page = decode(data.substring(1));
+    page = page.page;
     dispatch(countryLoading());
     axios
-      .get(`${process.env.REACT_APP_URL_START}/countries`)
+      .get(
+        `${process.env.REACT_APP_URL_START}/countries/`,
+
+        {
+          params: {
+            page: page
+          }
+        }
+      )
       .then(countries => {
         dispatch(countryOpenSuccess(countries.data));
       })
       .catch(err => {
         console.log(err);
-        dispatch(countryOpenFailed(err.response.data));
+        dispatch(countryOpenFailed(err.response));
       });
   };
 };
@@ -165,7 +176,14 @@ export const countryDelSuccess = (msg, countryID) => {
 export const countryDelFailed = errors => {
   return {
     type: actionTypes.COUNTRY_DEL_FAILED,
-    loading: false,
     errors: errors
+  };
+};
+
+// COUNTRY ERASE
+
+export const eraseCountry = () => {
+  return {
+    type: actionTypes.ERASE_COUNTRY
   };
 };

@@ -14,6 +14,10 @@ const Button = props => {
     ok = style.ok;
   }
 
+  if (props.btStyle === "navPage") {
+    ok = style.navPage;
+  }
+
   if (props.btStyle === "remove") {
     remove = style.remove;
   }

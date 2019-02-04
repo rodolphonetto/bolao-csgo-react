@@ -11,6 +11,11 @@ import Country from "../Country/Country";
 import CountryEdit from "../Country/CountryEdit/CountryEdit";
 
 class Dashboard extends Component {
+  teste(e) {
+    e.preventDefault();
+    this.props.history.push(`${this.props.match.url}/countries?page=2`);
+  }
+
   render() {
     return (
       <>
@@ -24,7 +29,14 @@ class Dashboard extends Component {
               <>
                 <div className={style.panel}>
                   <div className={style.panelBar}>
-                    <Link to={`${this.props.match.url}/countries`}>Paises</Link>
+                    <Link
+                      to={{
+                        pathname: `${this.props.match.url}/countries`,
+                        search: "page=1"
+                      }}
+                    >
+                      Paises
+                    </Link>
                     <Link to={`${this.props.match.url}/countries`}>Times</Link>
                     <Link to={`${this.props.match.url}/countries`}>
                       Players

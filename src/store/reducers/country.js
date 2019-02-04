@@ -5,7 +5,8 @@ const initialState = {
   countries: [],
   country: {},
   errors: {},
-  edited: false
+  edited: false,
+  navigation: {}
 };
 
 const reducer = (state = initialState, action) => {
@@ -19,7 +20,15 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        countries: action.data,
+        countries: action.data.countries,
+        navigation: {
+          currentPage: action.data.currentPage,
+          hasNextPage: action.data.hasNextPage,
+          hasPrevPage: action.data.hasPrevPage,
+          nextPage: action.data.nextPage,
+          previousPage: action.data.previousPage,
+          lastPage: action.data.lastPage
+        },
         errors: {},
         country: {},
         edited: false
@@ -95,6 +104,16 @@ const reducer = (state = initialState, action) => {
         loading: false,
         errors: action.errors,
         edited: false
+      };
+    case actionTypes.ERASE_COUNTRY:
+      return {
+        ...state,
+        loading: false,
+        countries: [],
+        country: {},
+        errors: {},
+        edited: false,
+        navigation: {}
       };
 
     default:

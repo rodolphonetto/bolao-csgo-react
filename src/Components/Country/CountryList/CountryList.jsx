@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-
 import * as Actions from "../../../store/actions/index";
 
 import style from "./CountryList.module.scss";
@@ -12,7 +11,13 @@ import Button from "../../Layout/Button";
 
 class CountryList extends Component {
   componentDidMount() {
-    this.props.countryOpen();
+    this.props.countryOpen(this.props.location.search);
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.location.search !== this.props.location.search) {
+      return this.props.countryOpen(this.props.location.search);
+    }
   }
 
   render() {
@@ -29,11 +34,65 @@ class CountryList extends Component {
         <div className={style.wrapper}>
           <div className={style.countries}>{countries}</div>
           {this.props.isAuth && (
-            <div className={style.controlls}>
-              <Link to={`${this.props.match.url}/add-country`}>
-                <Button btStyle="ok">Novo País</Button>
-              </Link>
-            </div>
+            <>
+              <div className={style.controlls}>
+                {this.props.navigation.currentPage !== 1 && (
+                  <Link
+                    to={{
+                      pathname: this.props.match.url,
+                      search: `?page=1`
+                    }}
+                  >
+                    <Button btStyle="navPage" controlls="yes">
+                      Primeira
+                    </Button>
+                  </Link>
+                )}
+
+                {this.props.navigation.hasPrevPage && (
+                  <Link
+                    to={{
+                      pathname: this.props.match.url,
+                      search: `?page=${this.props.navigation.previousPage}`
+                    }}
+                  >
+                    <Button btStyle="navPage" controlls="yes">
+                      {"<"}
+                    </Button>
+                  </Link>
+                )}
+                {this.props.navigation.hasNextPage && (
+                  <Link
+                    to={{
+                      pathname: this.props.match.url,
+                      search: `?page=${this.props.navigation.nextPage}`
+                    }}
+                  >
+                    <Button btStyle="navPage" controlls="yes">
+                      {">"}
+                    </Button>
+                  </Link>
+                )}
+                {this.props.navigation.lastPage !==
+                  this.props.navigation.currentPage && (
+                  <Link
+                    to={{
+                      pathname: this.props.match.url,
+                      search: `?page=${this.props.navigation.lastPage}`
+                    }}
+                  >
+                    <Button btStyle="navPage" controlls="yes">
+                      {"Ultima"}
+                    </Button>
+                  </Link>
+                )}
+              </div>
+              <div className={style.controlls}>
+                <Link to={`${this.props.match.url}/add-country`}>
+                  <Button btStyle="ok">Novo País</Button>
+                </Link>
+              </div>
+            </>
           )}
         </div>
       </>
@@ -45,13 +104,14 @@ const mapStateToProps = state => {
   return {
     isAuth: state.auth.isAuthenticated,
     countries: state.country.countries,
-    loading: state.country.loading
+    loading: state.country.loading,
+    navigation: state.country.navigation
   };
 };
 
 const mapDispatchtoProps = dispatch => {
   return {
-    countryOpen: () => dispatch(Actions.countryOpen())
+    countryOpen: data => dispatch(Actions.countryOpen(data))
   };
 };
 
