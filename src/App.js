@@ -9,6 +9,7 @@ import store from "./store";
 import Landing from "./Components/Landing/Landing";
 import DashBoard from "./Components/Dashboard/Dashboard";
 
+// TODO Ajustar token para kikar usuario com token vencido
 // Check token
 if (localStorage.jwtToken) {
   setAuthToken(localStorage.jwtToken);

@@ -5,7 +5,6 @@ import { connect } from "react-redux";
 import CountryList from "./CountryList/CountryList";
 import CountryEdit from "./CountryEdit/CountryEdit";
 import CountryAdd from "./CountryAdd/CountryAdd";
-import Spinner from "../Layout/Spinner";
 
 class Country extends Component {
   componentDidUpdate() {

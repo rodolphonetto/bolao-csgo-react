@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Route } from "react-router-dom";
+import { Route, Link } from "react-router-dom";
 
 import style from "./DashBoard.module.scss";
 
@@ -23,6 +23,16 @@ class Dashboard extends Component {
             this.props.isAuth && (
               <>
                 <div className={style.panel}>
+                  <div className={style.panelBar}>
+                    <Link to={`${this.props.match.url}/countries`}>Paises</Link>
+                    <Link to={`${this.props.match.url}/countries`}>Times</Link>
+                    <Link to={`${this.props.match.url}/countries`}>
+                      Players
+                    </Link>
+                    <Link to={`${this.props.match.url}/countries`}>
+                      Partidas
+                    </Link>
+                  </div>
                   <Route
                     path={`${this.props.match.url}/countries`}
                     component={Country}
