@@ -34,3 +34,13 @@ export const COUNTRY_DEL_SUCCESS = "COUNTRY_DEL_SUCCESS";
 export const COUNTRY_DEL_FAILED = "COUNTRY_DEL_FAILED";
 
 export const ERASE_COUNTRY = "ERASE_COUNTRY";
+
+// Team Actions
+export const TEAM_OPEN = "TEAM_OPEN";
+export const TEAM_LOADING = "TEAM_LOADING";
+export const TEAM_OPEN_SUCCESS = "TEAM_OPEN_SUCCESS";
+export const TEAM_OPEN_FAILED = "TEAM_OPEN_FAILED";
+
+export const TEAM_DEL = "TEAM_DEL";
+export const TEAM_DEL_SUCCESS = "TEAM_DEL_SUCCESS";
+export const TEAM_DEL_FAILED = "TEAM_DEL_FAILED";

@@ -9,3 +9,5 @@ export {
   countryDel,
   eraseCountry
 } from "./country";
+
+export { teamOpen, teamDel } from "./team";

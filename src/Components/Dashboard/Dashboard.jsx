@@ -8,14 +8,9 @@ import Spinner from "../Layout/Spinner";
 import NavBar from "../Layout/NavBar";
 import Logout from "../Login/Logout";
 import Country from "../Country/Country";
-import CountryEdit from "../Country/CountryEdit/CountryEdit";
+import Team from "../Team/Team";
 
 class Dashboard extends Component {
-  teste(e) {
-    e.preventDefault();
-    this.props.history.push(`${this.props.match.url}/countries?page=2`);
-  }
-
   render() {
     return (
       <>
@@ -37,7 +32,7 @@ class Dashboard extends Component {
                     >
                       Paises
                     </Link>
-                    <Link to={`${this.props.match.url}/countries`}>Times</Link>
+                    <Link to={`${this.props.match.url}/teams`}>Times</Link>
                     <Link to={`${this.props.match.url}/countries`}>
                       Players
                     </Link>
@@ -50,8 +45,8 @@ class Dashboard extends Component {
                     component={Country}
                   />
                   <Route
-                    path={`${this.props.match.url}/edit-country/:id`}
-                    component={CountryEdit}
+                    path={`${this.props.match.url}/teams`}
+                    component={Team}
                   />
                 </div>
                 <Route path="/logout" exact component={Logout} />
