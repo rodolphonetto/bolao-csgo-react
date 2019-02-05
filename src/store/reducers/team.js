@@ -39,6 +39,54 @@ const reducer = (state = initialState, action) => {
         loading: false,
         errors: action.errors
       };
+    case actionTypes.TEAM_ADD_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        msg: action.msg,
+        errors: {},
+        edited: true
+      };
+    case actionTypes.TEAM_ADD_FAILED:
+      return {
+        ...state,
+        loading: false,
+        errors: action.errors
+      };
+    case actionTypes.TEAM_EDIT_OPEN_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        team: action.team,
+        errors: {}
+      };
+    case actionTypes.TEAM_EDIT_OPEN_FAILED:
+      return {
+        ...state,
+        loading: false,
+        team: action.team,
+        errors: action.errors
+      };
+    case actionTypes.TEAM_EDIT_SAVE_SUCCESS:
+      const oldTeams = [...state.teams].filter(
+        team => team._id !== action.team._id
+      );
+
+      return {
+        ...state,
+        loading: false,
+        team: {},
+        teams: oldTeams.concat(action.team),
+        errors: {},
+        edited: true
+      };
+    case actionTypes.TEAM_EDIT_SAVE_FAILED:
+      return {
+        ...state,
+        loading: false,
+        errors: action.errors,
+        edited: false
+      };
     default:
       return state;
   }

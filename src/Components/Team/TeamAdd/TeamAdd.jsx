@@ -5,6 +5,7 @@ import style from "./TeamAdd.module.scss";
 
 import Form from "../../Layout/Form/Form";
 import InputGroup from "../../Layout/InputGroup/InputGroup";
+import SelectGroup from "../../Layout/SelectGroup/SelectGroup";
 
 class CountryEdit extends Component {
   constructor(props) {
@@ -13,6 +14,8 @@ class CountryEdit extends Component {
       name: ""
     };
   }
+
+  componentDidMount() {}
 
   componentDidUpdate() {
     if (this.props.edited) {
@@ -57,6 +60,12 @@ class CountryEdit extends Component {
             error={this.props.errors.file}
             errosMsg={this.props.errors.file}
           />
+          <SelectGroup
+            name="country"
+            label="País"
+            Labeltype="form"
+            htmlFor="image"
+          />
         </Form>
       </div>
     );
@@ -65,8 +74,8 @@ class CountryEdit extends Component {
 
 const mapStateToProps = state => {
   return {
-    edited: state.country.edited,
-    errors: state.country.errors
+    edited: state.team.edited,
+    errors: state.team.errors
   };
 };
 

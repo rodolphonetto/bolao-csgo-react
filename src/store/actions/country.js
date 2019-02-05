@@ -6,19 +6,18 @@ import { decode } from "qss";
 // COUNTRY SELECTION
 export const countryOpen = data => {
   return dispatch => {
-    let page = decode(data.substring(1));
-    page = page.page;
+    let searchParams = decode(data.substring(1));
+    let page = searchParams.page;
+    let maxItems = searchParams.maxItems;
+
     dispatch(countryLoading());
     axios
-      .get(
-        `${process.env.REACT_APP_URL_START}/countries/`,
-
-        {
-          params: {
-            page: page
-          }
+      .get(`${process.env.REACT_APP_URL_START}/countries/`, {
+        params: {
+          page: page,
+          maxItems: maxItems
         }
-      )
+      })
       .then(countries => {
         dispatch(countryOpenSuccess(countries.data));
       })

@@ -3,7 +3,7 @@ import { Route } from "react-router-dom";
 import { connect } from "react-redux";
 
 import TeamList from "./TeamList/TeamList";
-// import TeamEdit from "./TeamEdit/TeamEdit";
+import TeamEdit from "./TeamEdit/TeamEdit";
 import TeamAdd from "./TeamAdd/TeamAdd";
 
 class Team extends Component {
@@ -20,10 +20,10 @@ class Team extends Component {
       <>
         {!this.props.isAuth && <h1>Você não está autorizado</h1>}
         <Route path={`${this.props.match.url}`} exact component={TeamList} />
-        {/* <Route
+        <Route
           path={`${this.props.match.url}/edit-team/:_id`}
-          component={teamEdit}
-        /> */}
+          component={TeamEdit}
+        />
         <Route path={`${this.props.match.url}/add-team`} component={TeamAdd} />
       </>
     );
@@ -33,8 +33,7 @@ class Team extends Component {
 const mapStateToProps = state => {
   return {
     isAuth: state.auth.isAuthenticated,
-    loading: state.team.loading,
-    countries: state.team.countries
+    loading: state.team.loading
   };
 };
 

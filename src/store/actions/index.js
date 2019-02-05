@@ -10,4 +10,11 @@ export {
   eraseCountry
 } from "./country";
 
-export { teamOpen, teamDel } from "./team";
+export {
+  teamOpen,
+  teamAdd,
+  teamEditOpen,
+  teamEditOpenSuccess,
+  teamEditSave,
+  teamDel
+} from "./team";

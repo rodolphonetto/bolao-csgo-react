@@ -24,9 +24,11 @@ const CountryItem = props => {
       <Link to={`${props.url}/edit-country/${props._id}`}>
         <Button btStyle="edit">Editar</Button>
       </Link>
-      <Button clicked={() => onDelete(props._id)} btStyle="remove">
-        Excluir
-      </Button>
+      <div>
+        <Button clicked={() => onDelete(props._id)} btStyle="remove">
+          Excluir
+        </Button>
+      </div>
     </div>
   );
 };

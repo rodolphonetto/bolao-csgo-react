@@ -27,12 +27,19 @@ class Dashboard extends Component {
                     <Link
                       to={{
                         pathname: `${this.props.match.url}/countries`,
-                        search: "page=1"
+                        search: `?page=1&maxItems=12`
                       }}
                     >
                       Paises
                     </Link>
-                    <Link to={`${this.props.match.url}/teams`}>Times</Link>
+                    <Link
+                      to={{
+                        pathname: `${this.props.match.url}/teams`,
+                        search: `?page=1&maxItems=12`
+                      }}
+                    >
+                      Times
+                    </Link>
                     <Link to={`${this.props.match.url}/countries`}>
                       Players
                     </Link>
@@ -64,9 +71,4 @@ const mapStateToProps = state => ({
   lading: state.country.loading
 });
 
-const mapDispatchToProps = {};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Dashboard);
+export default connect(mapStateToProps)(Dashboard);

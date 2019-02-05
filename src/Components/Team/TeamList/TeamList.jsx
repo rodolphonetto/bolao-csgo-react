@@ -22,7 +22,6 @@ class TeamList extends Component {
 
   render() {
     const teams = this.props.teams.map((team, index) => {
-      console.log(team);
       return <TeamItem url={this.props.match.url} key={index} {...team} />;
     });
 
@@ -39,7 +38,7 @@ class TeamList extends Component {
                   <Link
                     to={{
                       pathname: this.props.match.url,
-                      search: `?page=1`
+                      search: `?page=1&maxItems=12`
                     }}
                   >
                     <Button btStyle="navPage" controlls="yes">
@@ -52,7 +51,9 @@ class TeamList extends Component {
                   <Link
                     to={{
                       pathname: this.props.match.url,
-                      search: `?page=${this.props.navigation.previousPage}`
+                      search: `?page=${
+                        this.props.navigation.previousPage
+                      }&maxItems=12`
                     }}
                   >
                     <Button btStyle="navPage" controlls="yes">
@@ -64,7 +65,9 @@ class TeamList extends Component {
                   <Link
                     to={{
                       pathname: this.props.match.url,
-                      search: `?page=${this.props.navigation.nextPage}`
+                      search: `?page=${
+                        this.props.navigation.nextPage
+                      }&maxItems=12`
                     }}
                   >
                     <Button btStyle="navPage" controlls="yes">
@@ -77,7 +80,9 @@ class TeamList extends Component {
                   <Link
                     to={{
                       pathname: this.props.match.url,
-                      search: `?page=${this.props.navigation.lastPage}`
+                      search: `?page=${
+                        this.props.navigation.lastPage
+                      }&maxItems=12`
                     }}
                   >
                     <Button btStyle="navPage" controlls="yes">

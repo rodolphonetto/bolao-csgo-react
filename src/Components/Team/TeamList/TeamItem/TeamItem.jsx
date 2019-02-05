@@ -29,9 +29,11 @@ const TeamItem = props => {
       <Link to={`${props.url}/edit-team/${props._id}`}>
         <Button btStyle="edit">Editar</Button>
       </Link>
-      <Button clicked={() => onDelete(props._id)} btStyle="remove">
-        Excluir
-      </Button>
+      <div>
+        <Button clicked={() => onDelete(props._id)} btStyle="remove">
+          Excluir
+        </Button>
+      </div>
     </div>
   );
 };

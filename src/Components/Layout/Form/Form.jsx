@@ -22,6 +22,15 @@ class Form extends Component {
     if (this.props.sendAction === "onCountryEditSave") {
       this.props.onCountryEditSave(Data);
     }
+
+    if (this.props.sendAction === "teamAdd") {
+      this.props.teamAdd(Data);
+    }
+
+    if (this.props.sendAction === "onTeamEditSave") {
+      this.props.onTeamEditSave(Data);
+    }
+
     if (this.props.sendAction === "onLogin") {
       this.props.onLogin(Data);
     }
@@ -72,9 +81,14 @@ class Form extends Component {
 
 const mapDispatchtoProps = dispatch => {
   return {
+    // Country
     countryAdd: countryData => dispatch(Actions.countryAdd(countryData)),
     onCountryEditSave: countryData =>
       dispatch(Actions.countryEditSave(countryData)),
+    // Team
+    teamAdd: teamData => dispatch(Actions.teamAdd(teamData)),
+    onTeamEditSave: teamData => dispatch(Actions.teamEditSave(teamData)),
+    // Login
     onLogin: userData => dispatch(Actions.login(userData)),
     onSignup: newUser => dispatch(Actions.singup(newUser))
   };
