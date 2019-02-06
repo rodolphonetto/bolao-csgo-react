@@ -1,14 +1,15 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import Select from "react-select";
 import * as Actions from "../../../store/actions/index";
 
 import classnames from "classnames";
 
-import style from "./SelectGroup.module.scss";
+import style from "./InputSelect.module.scss";
 
-class SelectGroup extends Component {
+class InputSelect extends Component {
   componentDidMount() {
-    this.props.countryOpen("?page=1&maxItems=10000");
+    this.props.teamOpen("?page=1&maxItems=10000");
   }
 
   render() {
@@ -30,38 +31,35 @@ class SelectGroup extends Component {
       this.form = style.form;
     }
 
-    const countries = this.props.countries.map((country, index) => {
-      if (country._id === this.props.selected) {
-        return (
-          <option selected key={index} value={country._id}>
-            {country.name}
-          </option>
-        );
+    this.options = this.props.teams.map((team, index) => {
+      console.log(team);
+      if (team._id === this.props.selected) {
+        return {
+          value: team._id,
+          label: team.name
+        };
       }
-      return (
-        <option key={index} value={country._id}>
-          {country.name}
-        </option>
-      );
+      return {
+        value: team._id,
+        label: team.name
+      };
     });
 
     return (
       <div className={style.inputGroup}>
-        <select
-          className={classnames(style.inputs, this.hasErrors)}
+        <Select
+          className={style.inputs}
+          options={this.options}
           name={this.props.name}
-        >
-          {countries}
-        </select>
+          placeholder={this.props.placeholder}
+          onChange={this.props.clicked}
+        />
         <label
           className={classnames(this.login, this.form)}
           htmlFor={this.props.htmlFor}
         >
           {this.props.label}
         </label>
-        {this.props.error && (
-          <div className={style.errorMessage}>{this.props.errosMsg}</div>
-        )}
       </div>
     );
   }
@@ -69,17 +67,17 @@ class SelectGroup extends Component {
 
 const mapStateToProps = state => {
   return {
-    countries: state.country.countries
+    teams: state.team.teams
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    countryOpen: data => dispatch(Actions.countryOpen(data))
+    teamOpen: data => dispatch(Actions.teamOpen(data))
   };
 };
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(SelectGroup);
+)(InputSelect);

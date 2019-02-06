@@ -6,6 +6,7 @@ import style from "./TeamAdd.module.scss";
 import Form from "../../Layout/Form/Form";
 import InputGroup from "../../Layout/InputGroup/InputGroup";
 import SelectGroup from "../../Layout/SelectGroup/SelectGroup";
+import InputSelect from "../../Layout/InputSelect/InputSelect";
 
 class CountryEdit extends Component {
   constructor(props) {
@@ -66,6 +67,16 @@ class CountryEdit extends Component {
             Labeltype="form"
             htmlFor="image"
           />
+          <InputSelect
+            name="teste"
+            label="teste"
+            Labeltype="form"
+            htmlFor="teste"
+            placeholder="Digite um time"
+            clicked={this.onChangeHandler}
+          >
+            Teste
+          </InputSelect>
         </Form>
       </div>
     );

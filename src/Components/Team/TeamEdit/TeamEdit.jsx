@@ -26,7 +26,7 @@ class TeamEditList extends Component {
           <TeamEdit
             name={this.props.team.name}
             teamID={this.props.team._id}
-            // countryID={this.props.team.country}
+            countryID={this.props.team.country}
           />
         ) : (
           <Spinner />

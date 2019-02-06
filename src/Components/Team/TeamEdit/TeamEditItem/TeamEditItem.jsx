@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import * as Actions from "../../../../store/actions/index";
 
 import InputGroup from "../../../Layout/InputGroup/InputGroup";
+import SelectGroup from "../../../Layout/SelectGroup/SelectGroup";
 import Form from "../../../Layout/Form/Form";
 
 class TeamEdit extends Component {
@@ -64,6 +65,15 @@ class TeamEdit extends Component {
           type="file"
           name="image"
         />
+
+        <SelectGroup
+          name="country"
+          label="País"
+          Labeltype="form"
+          htmlFor="image"
+          selected={this.props.countryID}
+        />
+
         <input type="hidden" name="teamID" value={this.props.teamID} />
       </Form>
     );
