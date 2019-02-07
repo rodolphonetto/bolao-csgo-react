@@ -11,7 +11,7 @@ import style from "./TeamItem.module.scss";
 
 const TeamItem = props => {
   const onDelete = teamID => {
-    props.countryDel(teamID);
+    props.teamDel(teamID);
   };
   return (
     <div className={style.TeamItem}>
@@ -30,7 +30,6 @@ const TeamItem = props => {
         <Button btStyle="edit">Editar</Button>
       </Link>
       <div>
-        {/* TODO corrigir exclusão de times */}
         <Button clicked={() => onDelete(props._id)} btStyle="remove">
           Excluir
         </Button>

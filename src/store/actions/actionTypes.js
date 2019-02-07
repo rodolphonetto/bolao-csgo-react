@@ -57,6 +57,8 @@ export const TEAM_EDIT_SAVE = "TEAM_EDIT_SAVE";
 export const TEAM_EDIT_SAVE_SUCCESS = "TEAM_EDIT_SAVE_SUCCESS";
 export const TEAM_EDIT_SAVE_FAILED = "TEAM_EDIT_SAVE_FAILED";
 
+export const ERASE_TEAM = "ERASE_TEAM";
+
 // Match Actions
 export const MATCH_OPEN = "MATCH_OPEN";
 export const MATCH_LOADING = "MATCH_LOADING";
@@ -78,3 +80,5 @@ export const MATCH_EDIT_SAVE_FAILED = "MATCH_EDIT_SAVE_FAILED";
 export const MATCH_DEL = "MATCH_DEL";
 export const MATCH_DEL_SUCCESS = "MATCH_DEL_SUCCESS";
 export const MATCH_DEL_FAILED = "MATCH_DEL_FAILED";
+
+export const ERASE_MATCH = "ERASE_MATCH";

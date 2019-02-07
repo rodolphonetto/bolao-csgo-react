@@ -4,15 +4,14 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
 import * as Actions from "../../../../store/actions/index";
-
 import Button from "../../../Layout/Button";
-
 import style from "./MatchItem.module.scss";
 
 const MatchItem = props => {
   const onDelete = matchID => {
     props.matchDel(matchID);
   };
+
   return (
     <div className={style.matchItem}>
       <div className={style.teamA}>

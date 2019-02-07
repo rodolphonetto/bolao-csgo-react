@@ -88,6 +88,34 @@ const reducer = (state = initialState, action) => {
         errors: action.errors,
         edited: false
       };
+    case actionTypes.MATCH_DEL_SUCCESS:
+      const newmatches = [...state.matches].filter(
+        match => match._id !== action.match
+      );
+      return {
+        ...state,
+        loading: false,
+        match: {},
+        matches: newmatches,
+        errors: {}
+      };
+    case actionTypes.MATCH_DEL_FAILED:
+      return {
+        ...state,
+        loading: false,
+        errors: action.errors,
+        edited: false
+      };
+    case actionTypes.ERASE_MATCH:
+      return {
+        ...state,
+        loading: false,
+        countries: [],
+        team: {},
+        errors: {},
+        edited: false,
+        navigation: {}
+      };
     default:
       return state;
   }

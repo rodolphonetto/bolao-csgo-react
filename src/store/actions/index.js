@@ -16,7 +16,8 @@ export {
   teamEditOpen,
   teamEditOpenSuccess,
   teamEditSave,
-  teamDel
+  teamDel,
+  eraseTeam
 } from "./team";
 
 export {

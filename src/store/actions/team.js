@@ -12,7 +12,7 @@ export const teamOpen = data => {
     dispatch(teamLoading());
     axios
       .get(
-        `${process.env.REACT_APP_URL_START}/teams/`,
+        `${process.env.REACT_APP_URL_START}/teams`,
 
         {
           params: {
@@ -145,16 +145,12 @@ export const teamDel = team => {
   return dispatch => {
     dispatch(teamLoading());
     axios
-      .put(
-        `${process.env.REACT_APP_URL_START}/countries/del-team/${team}`,
-        team
-      )
+      .put(`${process.env.REACT_APP_URL_START}/teams/del-team/${team}`, team)
       .then(success => {
-        console.log(success);
         dispatch(teamDelSuccess(success.data.msg, success.data.teamID));
       })
       .catch(err => {
-        dispatch(teamDelFailed(err.response.data));
+        dispatch(teamDelFailed(err.response));
       });
   };
 };
@@ -171,5 +167,13 @@ export const teamDelFailed = errors => {
   return {
     type: actionTypes.TEAM_DEL_FAILED,
     errors: errors
+  };
+};
+
+// TEAM ERASE
+
+export const eraseTeam = () => {
+  return {
+    type: actionTypes.ERASE_TEAM
   };
 };

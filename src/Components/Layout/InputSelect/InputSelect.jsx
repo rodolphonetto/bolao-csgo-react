@@ -43,13 +43,6 @@ class InputSelect extends Component {
     }
 
     this.options = this.props.teams.map((team, index) => {
-      console.log(this.props);
-      if (team._id === this.props.selected) {
-        return {
-          value: team._id,
-          label: team.name
-        };
-      }
       return {
         value: team._id,
         label: team.name
@@ -63,7 +56,6 @@ class InputSelect extends Component {
           className={style.inputs}
           options={this.options}
           name={this.props.name}
-          placeholder="toma no cu"
           value={selectedOption}
           onChange={this.handleChange}
         />

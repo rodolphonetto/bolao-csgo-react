@@ -87,6 +87,35 @@ const reducer = (state = initialState, action) => {
         errors: action.errors,
         edited: false
       };
+    case actionTypes.TEAM_DEL_SUCCESS:
+      const newteams = [...state.teams].filter(
+        team => team._id !== action.team
+      );
+      return {
+        ...state,
+        loading: false,
+        team: {},
+        teams: newteams,
+        errors: {}
+      };
+    case actionTypes.TEAM_DEL_FAILED:
+      return {
+        ...state,
+        loading: false,
+        errors: action.errors,
+        edited: false
+      };
+    case actionTypes.ERASE_TEAM:
+      return {
+        ...state,
+        loading: false,
+        countries: [],
+        team: {},
+        errors: {},
+        edited: false,
+        navigation: {}
+      };
+
     default:
       return state;
   }

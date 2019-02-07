@@ -139,7 +139,7 @@ export const matchEditSaveFailed = errors => {
     errors: errors
   };
 };
-
+// TODO Colocar volta de erros da API
 // MATCH DELETE
 export const matchDel = match => {
   return dispatch => {
@@ -153,7 +153,7 @@ export const matchDel = match => {
         dispatch(matchDelSuccess(success.data.msg, success.data.matchID));
       })
       .catch(err => {
-        dispatch(matchDelFailed(err.response.data));
+        dispatch(matchDelFailed(err.response));
       });
   };
 };
@@ -170,5 +170,13 @@ export const matchDelFailed = errors => {
   return {
     type: actionTypes.MATCH_DEL_FAILED,
     errors: errors
+  };
+};
+
+// MATCH ERASE
+
+export const eraseMatch = () => {
+  return {
+    type: actionTypes.ERASE_MATCH
   };
 };
