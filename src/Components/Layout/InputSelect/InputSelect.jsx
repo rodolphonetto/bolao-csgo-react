@@ -8,6 +8,17 @@ import classnames from "classnames";
 import style from "./InputSelect.module.scss";
 
 class InputSelect extends Component {
+  state = {
+    selectedOption: {
+      value: this.props.teamID,
+      label: this.props.teamname
+    }
+  };
+
+  handleChange = selectedOption => {
+    this.setState({ selectedOption });
+  };
+
   componentDidMount() {
     this.props.teamOpen("?page=1&maxItems=10000");
   }
@@ -32,7 +43,7 @@ class InputSelect extends Component {
     }
 
     this.options = this.props.teams.map((team, index) => {
-      console.log(team);
+      console.log(this.props);
       if (team._id === this.props.selected) {
         return {
           value: team._id,
@@ -45,14 +56,16 @@ class InputSelect extends Component {
       };
     });
 
+    const { selectedOption } = this.state;
     return (
       <div className={style.inputGroup}>
         <Select
           className={style.inputs}
           options={this.options}
           name={this.props.name}
-          placeholder={this.props.placeholder}
-          onChange={this.props.clicked}
+          placeholder="toma no cu"
+          value={selectedOption}
+          onChange={this.handleChange}
         />
         <label
           className={classnames(this.login, this.form)}
@@ -60,6 +73,9 @@ class InputSelect extends Component {
         >
           {this.props.label}
         </label>
+        {this.props.error && (
+          <div className={style.errorMessage}>{this.props.errosMsg}</div>
+        )}
       </div>
     );
   }

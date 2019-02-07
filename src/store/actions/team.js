@@ -9,7 +9,6 @@ export const teamOpen = data => {
     let searchParams = decode(data.substring(1));
     let page = searchParams.page;
     let maxItems = searchParams.maxItems;
-    page = page.page;
     dispatch(teamLoading());
     axios
       .get(

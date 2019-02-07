@@ -9,6 +9,7 @@ import NavBar from "../Layout/NavBar";
 import Logout from "../Login/Logout";
 import Country from "../Country/Country";
 import Team from "../Team/Team";
+import Match from "../Match/Match";
 
 class Dashboard extends Component {
   render() {
@@ -43,7 +44,12 @@ class Dashboard extends Component {
                     <Link to={`${this.props.match.url}/countries`}>
                       Players
                     </Link>
-                    <Link to={`${this.props.match.url}/countries`}>
+                    <Link
+                      to={{
+                        pathname: `${this.props.match.url}/matches`,
+                        search: `?page=1&maxItems=12`
+                      }}
+                    >
                       Partidas
                     </Link>
                   </div>
@@ -54,6 +60,10 @@ class Dashboard extends Component {
                   <Route
                     path={`${this.props.match.url}/teams`}
                     component={Team}
+                  />
+                  <Route
+                    path={`${this.props.match.url}/matches`}
+                    component={Match}
                   />
                 </div>
                 <Route path="/logout" exact component={Logout} />

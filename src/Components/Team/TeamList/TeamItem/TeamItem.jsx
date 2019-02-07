@@ -30,6 +30,7 @@ const TeamItem = props => {
         <Button btStyle="edit">Editar</Button>
       </Link>
       <div>
+        {/* TODO corrigir exclusão de times */}
         <Button clicked={() => onDelete(props._id)} btStyle="remove">
           Excluir
         </Button>

@@ -31,6 +31,14 @@ class Form extends Component {
       this.props.onTeamEditSave(Data);
     }
 
+    if (this.props.sendAction === "matchAdd") {
+      this.props.matchAdd(Data);
+    }
+
+    if (this.props.sendAction === "onMatchEditSave") {
+      this.props.onMatchEditSave(Data);
+    }
+
     if (this.props.sendAction === "onLogin") {
       this.props.onLogin(Data);
     }
@@ -88,6 +96,9 @@ const mapDispatchtoProps = dispatch => {
     // Team
     teamAdd: teamData => dispatch(Actions.teamAdd(teamData)),
     onTeamEditSave: teamData => dispatch(Actions.teamEditSave(teamData)),
+    // Match
+    matchAdd: matchData => dispatch(Actions.matchAdd(matchData)),
+    onMatchEditSave: matchData => dispatch(Actions.matchEditSave(matchData)),
     // Login
     onLogin: userData => dispatch(Actions.login(userData)),
     onSignup: newUser => dispatch(Actions.singup(newUser))

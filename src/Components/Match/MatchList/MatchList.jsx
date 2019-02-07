@@ -3,26 +3,26 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import * as Actions from "../../../store/actions/index";
 
-import style from "./TeamList.module.scss";
+import style from "./MatchList.module.scss";
 
 import Spinner from "../../Layout/Spinner";
-import TeamItem from "./TeamItem/TeamItem";
+import MatchItem from "./MatchItem/MatchItem";
 import Button from "../../Layout/Button";
 
-class TeamList extends Component {
+class MatchList extends Component {
   componentDidMount() {
-    this.props.teamOpen(this.props.location.search);
+    this.props.matchOpen(this.props.location.search);
   }
 
   componentDidUpdate(prevProps) {
     if (prevProps.location.search !== this.props.location.search) {
-      return this.props.teamOpen(this.props.location.search);
+      return this.props.matchOpen(this.props.location.search);
     }
   }
 
   render() {
-    const teams = this.props.teams.map((team, index) => {
-      return <TeamItem url={this.props.match.url} key={index} {...team} />;
+    const matches = this.props.matches.map((match, index) => {
+      return <MatchItem url={this.props.match.url} key={index} {...match} />;
     });
 
     return this.props.loading ? (
@@ -30,7 +30,7 @@ class TeamList extends Component {
     ) : (
       <>
         <div className={style.wrapper}>
-          <div className={style.matches}>{teams}</div>
+          <div className={style.matches}>{matches}</div>
           {this.props.isAuth && (
             <>
               <div className={style.controlls}>
@@ -92,8 +92,8 @@ class TeamList extends Component {
                 )}
               </div>
               <div className={style.controlls}>
-                <Link to={`${this.props.match.url}/add-team`}>
-                  <Button btStyle="ok">Novo Time</Button>
+                <Link to={`${this.props.match.url}/add-match`}>
+                  <Button btStyle="ok">Nova Partida</Button>
                 </Link>
               </div>
             </>
@@ -107,19 +107,19 @@ class TeamList extends Component {
 const mapStateToProps = state => {
   return {
     isAuth: state.auth.isAuthenticated,
-    teams: state.team.teams,
-    loading: state.team.loading,
-    navigation: state.team.navigation
+    matches: state.match.matches,
+    loading: state.match.loading,
+    navigation: state.match.navigation
   };
 };
 
 const mapDispatchtoProps = dispatch => {
   return {
-    teamOpen: data => dispatch(Actions.teamOpen(data))
+    matchOpen: data => dispatch(Actions.matchOpen(data))
   };
 };
 
 export default connect(
   mapStateToProps,
   mapDispatchtoProps
-)(TeamList);
+)(MatchList);

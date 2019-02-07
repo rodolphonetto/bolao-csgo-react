@@ -3,13 +3,13 @@ import { connect } from "react-redux";
 
 import Form from "../../Layout/Form/Form";
 import InputGroup from "../../Layout/InputGroup/InputGroup";
-import SelectGroup from "../../Layout/SelectGroup/SelectGroup";
+import InputSelect from "../../Layout/InputSelect/InputSelect";
 
-class TeamAdd extends Component {
+class MatchAdd extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: ""
+      desc: ""
     };
   }
 
@@ -31,38 +31,39 @@ class TeamAdd extends Component {
     return (
       <div>
         <Form
-          name="addteam"
-          title="Adicionar Time"
+          name="addmatch"
+          title="Adicionar Partida"
           formStyle="formWhite"
           btStyle="formWhite"
           btText="Adicionar"
-          sendAction="teamAdd"
+          sendAction="matchAdd"
         >
           <InputGroup
-            label="Nome"
+            label="Descrição"
             Labeltype="form"
-            htmlFor="name"
+            htmlFor="desc"
             type="text"
-            name="name"
-            value={this.state.name}
+            name="desc"
+            value={this.state.desc}
             changed={this.onChangeHandler}
-            error={this.props.errors.name}
-            errosMsg={this.props.errors.name}
+            error={this.props.errors.resultAEmpty}
+            errosMsg={this.props.errors.resultAEmpty}
           />
-          <InputGroup
-            label="Logo"
+          <InputSelect
+            name="teamA"
+            label="Time A"
             Labeltype="form"
-            htmlFor="image"
-            type="file"
-            name="image"
-            error={this.props.errors.file}
-            errosMsg={this.props.errors.file}
+            placeholder="Time A"
+            error={this.props.errors.teamA}
+            errosMsg={this.props.errors.teamA}
           />
-          <SelectGroup
-            name="country"
-            label="País"
+          <InputSelect
+            name="teamB"
+            label="Time B"
             Labeltype="form"
-            htmlFor="image"
+            placeholder="Time B"
+            error={this.props.errors.teamB}
+            errosMsg={this.props.errors.teamB}
           />
         </Form>
       </div>
@@ -72,9 +73,9 @@ class TeamAdd extends Component {
 
 const mapStateToProps = state => {
   return {
-    edited: state.team.edited,
-    errors: state.team.errors
+    edited: state.match.edited,
+    errors: state.match.errors
   };
 };
 
-export default connect(mapStateToProps)(TeamAdd);
+export default connect(mapStateToProps)(MatchAdd);

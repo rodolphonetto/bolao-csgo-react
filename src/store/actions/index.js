@@ -18,3 +18,12 @@ export {
   teamEditSave,
   teamDel
 } from "./team";
+
+export {
+  matchOpen,
+  matchDel,
+  matchAdd,
+  matchEditOpen,
+  matchEditOpenSuccess,
+  matchEditSave
+} from "./match";
