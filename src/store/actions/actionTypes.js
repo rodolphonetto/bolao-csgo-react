@@ -82,3 +82,15 @@ export const MATCH_DEL_SUCCESS = "MATCH_DEL_SUCCESS";
 export const MATCH_DEL_FAILED = "MATCH_DEL_FAILED";
 
 export const ERASE_MATCH = "ERASE_MATCH";
+
+// Bet Actions
+export const BET_OPEN = "BET_OPEN";
+export const BET_LOADING = "BET_LOADING";
+export const BET_OPEN_SUCCESS = "BET_OPEN_SUCCESS";
+export const BET_OPEN_FAILED = "BET_OPEN_FAILED";
+
+export const BET_ADD = "BET_ADD";
+export const BET_ADD_SUCCESS = "BET_ADD_SUCCESS";
+export const BET_ADD_FAILED = "BET_ADD_FAILED";
+
+export const ERASE_BET = "ERASE_BET";

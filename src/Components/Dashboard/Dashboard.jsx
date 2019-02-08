@@ -10,6 +10,7 @@ import Logout from "../Login/Logout";
 import Country from "../Country/Country";
 import Team from "../Team/Team";
 import Match from "../Match/Match";
+import Bet from "../Bet/Bet";
 
 class Dashboard extends Component {
   render() {
@@ -20,55 +21,58 @@ class Dashboard extends Component {
           {this.props.loading && <Spinner />}
           {!this.props.isAuth ? (
             <h1>Você não está autorizado</h1>
-          ) : (
-            this.props.isAuth && (
-              <>
-                <div className={style.panel}>
-                  <div className={style.panelBar}>
-                    <Link
-                      to={{
-                        pathname: `${this.props.match.url}/countries`,
-                        search: `?page=1&maxItems=12`
-                      }}
-                    >
-                      Paises
-                    </Link>
-                    <Link
-                      to={{
-                        pathname: `${this.props.match.url}/teams`,
-                        search: `?page=1&maxItems=12`
-                      }}
-                    >
-                      Times
-                    </Link>
-                    <Link to={`${this.props.match.url}/countries`}>
-                      Players
-                    </Link>
-                    <Link
-                      to={{
-                        pathname: `${this.props.match.url}/matches`,
-                        search: `?page=1&maxItems=12`
-                      }}
-                    >
-                      Partidas
-                    </Link>
-                  </div>
-                  <Route
-                    path={`${this.props.match.url}/countries`}
-                    component={Country}
-                  />
-                  <Route
-                    path={`${this.props.match.url}/teams`}
-                    component={Team}
-                  />
-                  <Route
-                    path={`${this.props.match.url}/matches`}
-                    component={Match}
-                  />
+          ) : this.props.admin ? (
+            <>
+              <div className={style.panel}>
+                <div className={style.panelBar}>
+                  <Link
+                    to={{
+                      pathname: `${this.props.match.url}/countries`,
+                      search: `?page=1&maxItems=12`
+                    }}
+                  >
+                    Paises
+                  </Link>
+                  <Link
+                    to={{
+                      pathname: `${this.props.match.url}/teams`,
+                      search: `?page=1&maxItems=12`
+                    }}
+                  >
+                    Times
+                  </Link>
+                  <Link to={`${this.props.match.url}/countries`}>Players</Link>
+                  <Link
+                    to={{
+                      pathname: `${this.props.match.url}/matches`,
+                      search: `?page=1&maxItems=12`
+                    }}
+                  >
+                    Partidas
+                  </Link>
                 </div>
-                <Route path="/logout" exact component={Logout} />
-              </>
-            )
+                <Route
+                  path={`${this.props.match.url}/countries`}
+                  component={Country}
+                />
+                <Route
+                  path={`${this.props.match.url}/teams`}
+                  component={Team}
+                />
+                <Route
+                  path={`${this.props.match.url}/matches`}
+                  component={Match}
+                />
+              </div>
+              <Route path="/logout" exact component={Logout} />
+            </>
+          ) : (
+            <>
+              <div className={style.internalPanel}>
+                <div> </div>
+                <Route path={this.props.match.url} component={Bet} />
+              </div>
+            </>
           )}
         </div>
       </>
@@ -78,6 +82,7 @@ class Dashboard extends Component {
 
 const mapStateToProps = state => ({
   isAuth: state.auth.isAuthenticated,
+  admin: state.auth.currentUser.userAdmin,
   lading: state.country.loading
 });
 

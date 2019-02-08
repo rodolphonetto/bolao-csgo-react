@@ -7,9 +7,16 @@ import style from "./InputGroup.module.scss";
 const InputGroup = props => {
   // Input Classes
   let hasErrors = "";
+  let styleBet = "";
 
   if (props.error) {
     hasErrors = style.hasErrors;
+  }
+
+  if (props.bet === "sim") {
+    styleBet = style.bet;
+  } else {
+    styleBet = style.inputs;
   }
 
   // Label Classes
@@ -27,7 +34,7 @@ const InputGroup = props => {
   return (
     <div className={style.inputGroup}>
       <input
-        className={classnames(style.inputs, hasErrors)}
+        className={classnames(hasErrors, styleBet)}
         type={props.type}
         name={props.name}
         value={props.value}

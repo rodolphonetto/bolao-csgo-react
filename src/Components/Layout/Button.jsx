@@ -8,6 +8,7 @@ const Button = props => {
   let remove = null;
   let formBlack = null;
   let formWhite = null;
+  let formBet = null;
   let controlls = null;
 
   if (props.btStyle === "ok") {
@@ -29,6 +30,11 @@ const Button = props => {
   if (props.btStyle === "formWhite") {
     formWhite = style.formWhite;
   }
+
+  if (props.btStyle === "formBet") {
+    formBet = style.formBet;
+  }
+
   if (props.btStyle === "edit") {
     formWhite = style.edit;
   }
@@ -40,7 +46,14 @@ const Button = props => {
   return (
     <button
       onClick={props.clicked}
-      className={classnames(ok, remove, formBlack, formWhite, controlls)}
+      className={classnames(
+        ok,
+        remove,
+        formBlack,
+        formWhite,
+        controlls,
+        formBet
+      )}
     >
       {props.children}
     </button>

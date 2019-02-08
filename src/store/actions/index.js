@@ -28,3 +28,5 @@ export {
   matchEditOpenSuccess,
   matchEditSave
 } from "./match";
+
+export { betOpen, betAdd } from "./bet";

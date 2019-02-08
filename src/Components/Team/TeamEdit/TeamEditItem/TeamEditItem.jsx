@@ -88,13 +88,4 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchtoProps = dispatch => {
-  return {
-    onTeamEditSave: teamData => dispatch(Actions.teamEditSave(teamData))
-  };
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchtoProps
-)(TeamEdit);
+export default connect(mapStateToProps)(TeamEdit);

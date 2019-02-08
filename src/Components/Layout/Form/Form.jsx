@@ -13,6 +13,7 @@ class Form extends Component {
     event.preventDefault();
 
     const form = document.forms.namedItem(this.props.name);
+    console.log(form);
 
     const Data = new FormData(form);
 
@@ -37,6 +38,10 @@ class Form extends Component {
 
     if (this.props.sendAction === "onMatchEditSave") {
       this.props.onMatchEditSave(Data);
+    }
+
+    if (this.props.sendAction === "betAdd") {
+      this.props.betAdd(Data);
     }
 
     if (this.props.sendAction === "onLogin") {
@@ -99,6 +104,8 @@ const mapDispatchtoProps = dispatch => {
     // Match
     matchAdd: matchData => dispatch(Actions.matchAdd(matchData)),
     onMatchEditSave: matchData => dispatch(Actions.matchEditSave(matchData)),
+    // Bet
+    betAdd: betData => dispatch(Actions.betAdd(betData)),
     // Login
     onLogin: userData => dispatch(Actions.login(userData)),
     onSignup: newUser => dispatch(Actions.singup(newUser))

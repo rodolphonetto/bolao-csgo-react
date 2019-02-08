@@ -79,6 +79,28 @@
   border: 1px solid black;
 }
 
+.formBet {
+  display: block;
+  margin: 0 auto;
+  padding: 10px;
+  min-width: 100px;
+  background: black;
+  border: 1px solid white;
+  border-radius: 5px;
+  color: white;
+  font-family: "Sarabun", sans-serif;
+  font-size: 1rem;
+  transition: all 0.3s;
+}
+
+.formBet:hover {
+  cursor: pointer;
+  background: white;
+  color: black;
+  border: 1px solid black;
+  transform: scale(1.1);
+}
+
 .edit {
   background: none;
   font-weight: bold;
