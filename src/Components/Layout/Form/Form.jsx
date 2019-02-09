@@ -69,7 +69,7 @@ class Form extends Component {
     } else if (this.props.msgType === "ok") {
       ok = style.ok;
     }
-
+    console.log(this.props.open, this.props.betForm);
     return (
       <form
         onSubmit={this.onSubmit}
@@ -80,7 +80,9 @@ class Form extends Component {
         <div className={classnames(formWhite, formBlack)}>
           <h1>{this.props.title}</h1>
           {this.props.children}
-          <Button btStyle={this.props.btStyle}>{this.props.btText}</Button>
+          {(this.props.open || !this.props.betForm) && (
+            <Button btStyle={this.props.btStyle}>{this.props.btText}</Button>
+          )}
           {this.props.error && (
             <p className={classnames(error, ok)}>{this.props.error}</p>
           )}

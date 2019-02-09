@@ -40,10 +40,11 @@ const reducer = (state = initialState, action) => {
         errors: action.errors
       };
     case actionTypes.BET_ADD_SUCCESS:
+      const oldBets = [...state.bets].filter(bet => bet._id !== action.bet._id);
       return {
         ...state,
         loading: false,
-        msg: action.msg,
+        bets: oldBets.concat(action.bet),
         errors: {},
         edited: true
       };

@@ -116,7 +116,6 @@ export const teamEditSave = teamData => {
     axios
       .post(`${process.env.REACT_APP_URL_START}/teams/add-team`, teamData)
       .then(team => {
-        console.log("oi");
         dispatch(teamEditSaveSuccess(team.data));
       })
       .catch(err => {

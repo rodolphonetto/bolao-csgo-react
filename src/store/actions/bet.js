@@ -11,15 +11,12 @@ export const betOpen = data => {
     let maxItems = searchParams.maxItems;
     dispatch(betLoading());
     axios
-      .get(
-        `${process.env.REACT_APP_URL_START}/matches`,
-        {
-          params: {
-            page: page,
-            maxItems: maxItems
-          }
+      .get(`${process.env.REACT_APP_URL_START}/matches`, {
+        params: {
+          page: page,
+          maxItems: maxItems
         }
-      )
+      })
       .then(bets => {
         dispatch(betOpenSuccess(bets.data));
       })
@@ -56,8 +53,8 @@ export const betAdd = betData => {
     dispatch(betLoading());
     axios
       .post(`${process.env.REACT_APP_URL_START}/bets/add-bet`, betData)
-      .then(msg => {
-        dispatch(betAddSuccess(msg.data));
+      .then(bet => {
+        dispatch(betAddSuccess(bet.data));
       })
       .catch(err => {
         dispatch(betAddFailed(err.response.data));
@@ -65,10 +62,10 @@ export const betAdd = betData => {
   };
 };
 
-export const betAddSuccess = msg => {
+export const betAddSuccess = bet => {
   return {
     type: actionTypes.BET_ADD_SUCCESS,
-    msg: msg
+    bet: bet
   };
 };
 

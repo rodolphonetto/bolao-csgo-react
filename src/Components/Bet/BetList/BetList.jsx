@@ -22,7 +22,13 @@ class BetList extends Component {
 
   render() {
     const bets = this.props.bets.map((bet, index) => {
-      return <BetItem url={this.props.match.url} key={index} {...bet} />;
+      return (
+        <BetItem
+          url={this.props.match.url}
+          key={index}
+          {...bet}
+        />
+      );
     });
 
     return this.props.loading ? (
