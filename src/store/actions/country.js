@@ -145,7 +145,6 @@ export const countryEditSaveFailed = errors => {
 };
 
 // COUNTRY DELETE
-
 export const countryDel = country => {
   return dispatch => {
     dispatch(countryLoading());
@@ -155,7 +154,6 @@ export const countryDel = country => {
         country
       )
       .then(success => {
-        console.log(success);
         dispatch(countryDelSuccess(success.data.msg, success.data.countryID));
       })
       .catch(err => {
@@ -180,7 +178,6 @@ export const countryDelFailed = errors => {
 };
 
 // COUNTRY ERASE
-
 export const eraseCountry = () => {
   return {
     type: actionTypes.ERASE_COUNTRY

@@ -21,7 +21,7 @@ class MatchList extends Component {
   }
 
   render() {
-    const matches = this.props.matches.map((match, index) => {
+    const matches = this.props.matches.map((match, index) => { 
       return <MatchItem url={this.props.match.url} key={index} {...match} />;
     });
 
