@@ -23,14 +23,7 @@ class MatchEditList extends Component {
     return (
       <div className={style.matchEdit}>
         {this.props.partida.desc ? (
-          <MatchEdit
-            desc={this.props.partida.desc}
-            teamA={this.props.partida.teamA}
-            teamB={this.props.partida.teamB}
-            resultA={this.props.partida.resultA}
-            resultB={this.props.partida.resultB}
-            partidaID={this.props.partida._id}
-          />
+          <MatchEdit {...this.props.partida} />
         ) : (
           <Spinner />
         )}

@@ -5,6 +5,7 @@ import * as Actions from "../../../../store/actions/index";
 
 import InputGroup from "../../../Layout/InputGroup/InputGroup";
 import InputSelect from "../../../Layout/InputSelect/InputSelect";
+import SelectGroup from "../../../Layout/SelectGroup/SelectGroup";
 import Form from "../../../Layout/Form/Form";
 
 class MatchEdit extends Component {
@@ -38,6 +39,7 @@ class MatchEdit extends Component {
   };
 
   render() {
+    console.log(this.props);
     return (
       <Form
         name="editMatch"
@@ -78,7 +80,15 @@ class MatchEdit extends Component {
           teamname={this.props.teamB.name}
           teamID={this.props.teamB._id}
         />
-        <input type="hidden" name="matchID" value={this.props.partidaID} />
+        <SelectGroup
+          name="open"
+          label="Aberta"
+          Labeltype="form"
+          htmlFor="open"
+          selected={this.props.open}
+          closeMatch={true}
+        />
+        <input type="hidden" name="matchID" value={this.props._id} />
       </Form>
     );
   }

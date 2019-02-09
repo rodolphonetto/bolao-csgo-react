@@ -13,8 +13,6 @@ class Form extends Component {
     event.preventDefault();
 
     const form = document.forms.namedItem(this.props.name);
-    console.log(form);
-
     const Data = new FormData(form);
 
     if (this.props.sendAction === "countryAdd") {

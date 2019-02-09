@@ -8,7 +8,11 @@ import style from "./SelectGroup.module.scss";
 
 class SelectGroup extends Component {
   componentDidMount() {
-    this.props.countryOpen("?page=1&maxItems=10000");
+    if (this.props.closeMatch) {
+      console.log("True/False");
+    } else {
+      this.props.countryOpen("?page=1&maxItems=10000");
+    }
   }
 
   render() {
@@ -29,21 +33,43 @@ class SelectGroup extends Component {
     if (this.props.Labeltype === "form") {
       this.form = style.form;
     }
-
-    const countries = this.props.countries.map((country, index) => {
-      if (country._id === this.props.selected) {
+    // Tipo de Select (pais ou aberto/fechado)
+    if (this.props.closeMatch) {
+      if (this.props.selected) {
+        this.options = (
+          <>
+            <option selected value="sim">
+              Sim
+            </option>
+            <option value="nao">Não</option>
+          </>
+        );
+      } else {
+        this.options = (
+          <>
+            <option value="sim">Sim</option>
+            <option selected value="nao">
+              Não
+            </option>
+          </>
+        );
+      }
+    } else {
+      this.options = this.props.countries.map((country, index) => {
+        if (country._id === this.props.selected) {
+          return (
+            <option selected key={index} value={country._id}>
+              {country.name}
+            </option>
+          );
+        }
         return (
-          <option selected key={index} value={country._id}>
+          <option key={index} value={country._id}>
             {country.name}
           </option>
         );
-      }
-      return (
-        <option key={index} value={country._id}>
-          {country.name}
-        </option>
-      );
-    });
+      });
+    }
 
     return (
       <div className={style.inputGroup}>
@@ -51,7 +77,7 @@ class SelectGroup extends Component {
           className={classnames(style.inputs, this.hasErrors)}
           name={this.props.name}
         >
-          {countries}
+          {this.options}
         </select>
         <label
           className={classnames(this.login, this.form)}

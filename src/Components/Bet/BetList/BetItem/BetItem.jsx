@@ -2,7 +2,6 @@ import React, { Component } from "react";
 
 import { connect } from "react-redux";
 
-import * as Actions from "../../../../store/actions/index";
 import style from "./BetItem.module.scss";
 import Form from "../../../Layout/Form/Form";
 import InputGroup from "../../../Layout/InputGroup/InputGroup";
@@ -10,26 +9,38 @@ import InputGroup from "../../../Layout/InputGroup/InputGroup";
 class BetItem extends Component {
   constructor(props) {
     super(props);
+    this.bet = this.props.bets.filter(b => b.user === this.props.userID);
     this.state = {
       resultA: "",
       resultB: ""
     };
   }
+  componentDidMount() {
+    if (this.bet.length > 0) {
+      this.setState({
+        resultA: this.bet[0].resultA,
+        resultB: this.bet[0].resultB
+      });
+    }
+  }
+
+  componentDidUpdate() {
+    this.bet = this.props.bets.filter(b => b.user === this.props.userID);
+    if (this.bet.length > 0 && (this.state.resultA !== this.bet[0].resultA || this.state.resultB !== this.bet[0].resultB )) {
+      this.setState({
+        resultA: this.bet[0].resultA,
+        resultB: this.bet[0].resultB
+      });
+    }
+  }
 
   onChangeHandler = event => {
-    this.setState(
-      {
-        [event.target.name]: event.target.value
-      },
-      () => {
-        console.log(this.state);
-      }
-    );
+    this.setState({
+      [event.target.name]: event.target.value
+    });
   };
 
   render() {
-    console.log(this.props._id);
-    console.log(this.state);
     return (
       <Form
         name={this.props._id}
@@ -47,7 +58,6 @@ class BetItem extends Component {
               src={`${process.env.REACT_APP_URL_IMG}/${this.props.teamA.logo}`}
               alt={`Logo do ${this.props.teamA.name}`}
             />
-
             <InputGroup
               htmlFor="resultA"
               type="text"
@@ -80,7 +90,6 @@ class BetItem extends Component {
         </div>
         <input type="hidden" name="matchID" value={this.props._id} />
         <input type="hidden" name="userID" value={this.props.userID} />
-        <input type="hidden" name="betID" value={this.props.betID} />
       </Form>
     );
   }
