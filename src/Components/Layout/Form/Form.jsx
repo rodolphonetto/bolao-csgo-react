@@ -69,7 +69,6 @@ class Form extends Component {
     } else if (this.props.msgType === "ok") {
       ok = style.ok;
     }
-    console.log(this.props.open, this.props.betForm);
     return (
       <form
         onSubmit={this.onSubmit}

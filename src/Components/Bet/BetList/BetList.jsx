@@ -22,13 +22,10 @@ class BetList extends Component {
 
   render() {
     const bets = this.props.bets.map((bet, index) => {
-      return (
-        <BetItem
-          url={this.props.match.url}
-          key={index}
-          {...bet}
-        />
-      );
+      console.log(bet);
+      if (!bet.finished) {
+        return <BetItem url={this.props.match.url} key={index} {...bet} />;
+      }
     });
 
     return this.props.loading ? (
@@ -37,6 +34,7 @@ class BetList extends Component {
       <>
         <div className={style.wrapper}>
           <div className={style.bets}>{bets}</div>
+          <div className={style.errors}>{this.props.errors.result}</div>
           {this.props.isAuth && (
             <>
               <div className={style.controlls}>
@@ -110,6 +108,7 @@ const mapStateToProps = state => {
     isAuth: state.auth.isAuthenticated,
     bets: state.bet.bets,
     loading: state.bet.loading,
+    errors: state.bet.errors,
     navigation: state.bet.navigation
   };
 };

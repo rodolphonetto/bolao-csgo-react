@@ -21,7 +21,7 @@ class MatchList extends Component {
   }
 
   render() {
-    const matches = this.props.matches.map((match, index) => { 
+    const matches = this.props.matches.map((match, index) => {
       return <MatchItem url={this.props.match.url} key={index} {...match} />;
     });
 
@@ -91,6 +91,7 @@ class MatchList extends Component {
                   </Link>
                 )}
               </div>
+              <div className={style.errors}>{this.props.errors.msg}</div>
               <div className={style.controlls}>
                 <Link to={`${this.props.match.url}/add-match`}>
                   <Button btStyle="ok">Nova Partida</Button>
@@ -109,6 +110,7 @@ const mapStateToProps = state => {
     isAuth: state.auth.isAuthenticated,
     matches: state.match.matches,
     loading: state.match.loading,
+    errors: state.match.errors,
     navigation: state.match.navigation
   };
 };

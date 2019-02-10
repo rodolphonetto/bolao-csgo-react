@@ -183,7 +183,7 @@ export const matchFin = match => {
         dispatch(matchFinSuccess(match.data._id));
       })
       .catch(err => {
-        dispatch(matchFinFailed(err.response));
+        dispatch(matchFinFailed(err.response.data));
       });
   };
 };

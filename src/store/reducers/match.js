@@ -114,7 +114,7 @@ const reducer = (state = initialState, action) => {
         ...state,
         loading: false,
         match: {},
-        // matches: finished,
+        matches: finished,
         errors: {}
       };
     case actionTypes.MATCH_FIN_FAILED:

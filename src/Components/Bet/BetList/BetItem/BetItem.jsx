@@ -60,8 +60,6 @@ class BetItem extends Component {
                 bet="sim"
                 value={this.state.resultA}
                 changed={this.onChangeHandler}
-                // error={this.props.errors.name}
-                // errosMsg={this.props.errors.name}
               />
             ) : (
               <span className={style.betClosed}>{this.state.resultA}</span>
@@ -82,8 +80,6 @@ class BetItem extends Component {
                 bet="sim"
                 value={this.state.resultB}
                 changed={this.onChangeHandler}
-                // error={this.props.errors.name}
-                // errosMsg={this.props.errors.name}
               />
             ) : (
               <span className={style.betClosed}>{this.state.resultB}</span>
@@ -100,7 +96,8 @@ class BetItem extends Component {
 const mapStateToProps = state => {
   return {
     userID: state.auth.currentUser.userid,
-    errors: state.bet.loading
+    loading: state.bet.loading,
+    errors: state.bet.errors
   };
 };
 
