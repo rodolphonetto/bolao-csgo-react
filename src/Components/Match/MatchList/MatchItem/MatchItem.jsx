@@ -11,6 +11,9 @@ const MatchItem = props => {
   const onDelete = matchID => {
     props.matchDel(matchID);
   };
+  const onFinish = matchID => {
+    props.matchFin(matchID);
+  };
 
   return (
     <div className={style.matchItem}>
@@ -33,13 +36,18 @@ const MatchItem = props => {
         <div className={style.result}>{props.resultB}</div>
       </div>
       <div className={style.desc}>{props.desc}</div>
-      <Link to={`${props.url}/edit-match/${props._id}`}>
-        <Button btStyle="edit">Editar</Button>
-      </Link>
-      <div>
-        <Button clicked={() => onDelete(props._id)} btStyle="remove">
-          Excluir
+      <div className={style.buttons}>
+        <Link to={`${props.url}/edit-match/${props._id}`}>
+          <Button btStyle="edit">Editar</Button>
+        </Link>
+        <Button clicked={() => onFinish(props._id)} btStyle="finish">
+          Encerrar
         </Button>
+        <div className={style.remove}>
+          <Button clicked={() => onDelete(props._id)} btStyle="remove">
+            Excluir
+          </Button>
+        </div>
       </div>
     </div>
   );
@@ -47,7 +55,8 @@ const MatchItem = props => {
 
 const mapDispatchtoProps = dispatch => {
   return {
-    matchDel: matchID => dispatch(Actions.matchDel(matchID))
+    matchDel: matchID => dispatch(Actions.matchDel(matchID)),
+    matchFin: matchID => dispatch(Actions.matchFin(matchID))
   };
 };
 

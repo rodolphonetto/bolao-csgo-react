@@ -81,6 +81,10 @@ export const MATCH_DEL = "MATCH_DEL";
 export const MATCH_DEL_SUCCESS = "MATCH_DEL_SUCCESS";
 export const MATCH_DEL_FAILED = "MATCH_DEL_FAILED";
 
+export const MATCH_FIN = "MATCH_FIN";
+export const MATCH_FIN_SUCCESS = "MATCH_FIN_SUCCESS";
+export const MATCH_FIN_FAILED = "MATCH_FIN_FAILED";
+
 export const ERASE_MATCH = "ERASE_MATCH";
 
 // Bet Actions

@@ -106,6 +106,25 @@ const reducer = (state = initialState, action) => {
         errors: action.errors,
         edited: false
       };
+    case actionTypes.MATCH_FIN_SUCCESS:
+      const finished = [...state.matches].filter(
+        match => match._id !== action.match
+      );
+      return {
+        ...state,
+        loading: false,
+        match: {},
+        // matches: finished,
+        errors: {}
+      };
+    case actionTypes.MATCH_FIN_FAILED:
+      return {
+        ...state,
+        loading: false,
+        errors: action.errors,
+        edited: false
+      };
+
     case actionTypes.ERASE_MATCH:
       return {
         ...state,

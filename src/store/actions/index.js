@@ -26,7 +26,8 @@ export {
   matchAdd,
   matchEditOpen,
   matchEditOpenSuccess,
-  matchEditSave
+  matchEditSave,
+  matchFin
 } from "./match";
 
 export { betOpen, betAdd } from "./bet";

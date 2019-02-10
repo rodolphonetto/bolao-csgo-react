@@ -15,7 +15,22 @@
   grid-template-areas:
     "teamA teamB"
     "desc desc"
-    "edit remove";
+    "buttons buttons";
+}
+
+.buttons {
+  display: grid;
+  grid-row-gap: 20px;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    "edit finish"
+    "remove remove";
+  grid-area: buttons;
+}
+
+.remove {
+  justify-self: center;
+  grid-area: remove;
 }
 
 .teamA {

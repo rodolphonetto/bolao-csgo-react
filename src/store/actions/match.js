@@ -173,6 +173,35 @@ export const matchDelFailed = errors => {
   };
 };
 
+// MATCH FINISH
+export const matchFin = match => {
+  return dispatch => {
+    dispatch(matchLoading());
+    axios
+      .put(`${process.env.REACT_APP_URL_START}/bets/fin-match/${match}`, match)
+      .then(match => {
+        dispatch(matchFinSuccess(match.data._id));
+      })
+      .catch(err => {
+        dispatch(matchFinFailed(err.response));
+      });
+  };
+};
+
+export const matchFinSuccess = matchID => {
+  return {
+    type: actionTypes.MATCH_FIN_SUCCESS,
+    match: matchID
+  };
+};
+
+export const matchFinFailed = errors => {
+  return {
+    type: actionTypes.MATCH_FIN_FAILED,
+    errors: errors
+  };
+};
+
 // MATCH ERASE
 
 export const eraseMatch = () => {
