@@ -22,8 +22,9 @@ class BetList extends Component {
 
   render() {
     const bets = this.props.bets.map((bet, index) => {
-      console.log(bet);
-      if (!bet.finished) {
+      if (bet.finished) {
+        return null;
+      } else {
         return <BetItem url={this.props.match.url} key={index} {...bet} />;
       }
     });

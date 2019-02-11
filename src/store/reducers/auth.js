@@ -1,4 +1,5 @@
 import isEmpty from "../../validation/is-empty";
+import setAuthToken from "../../util/setAuthToken";
 
 import * as actionTypes from "../actions/actionTypes";
 
@@ -38,6 +39,7 @@ const reducer = (state = initialState, action) => {
       };
     case actionTypes.LOGOUT:
       localStorage.removeItem("jwtToken");
+      setAuthToken(false);
       return {
         ...state,
         isAuthenticated: false,
