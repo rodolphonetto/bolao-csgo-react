@@ -21,7 +21,7 @@ const MatchItem = props => {
         <div className={style.name}>{props.teamA.name}</div>
         <img
           className={style.logo}
-          src={`${process.env.REACT_APP_URL_IMG}/${props.teamA.logo}`}
+          src={props.teamA.url}
           alt={`Logo do ${props.name}`}
         />
         <div className={style.result}>{props.resultA}</div>
@@ -30,7 +30,7 @@ const MatchItem = props => {
         <div className={style.name}>{props.teamB.name}</div>
         <img
           className={style.logo}
-          src={`${process.env.REACT_APP_URL_IMG}/${props.teamB.logo}`}
+          src={props.teamB.url}
           alt={`Logo do ${props.name}`}
         />
         <div className={style.result}>{props.resultB}</div>

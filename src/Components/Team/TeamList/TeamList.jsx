@@ -22,7 +22,7 @@ class TeamList extends Component {
 
   render() {
     const teams = this.props.teams.map((team, index) => {
-      return <TeamItem url={this.props.match.url} key={index} {...team} />;
+      return <TeamItem urlEdit={this.props.match.url} key={index} {...team} />;
     });
 
     return this.props.loading ? (

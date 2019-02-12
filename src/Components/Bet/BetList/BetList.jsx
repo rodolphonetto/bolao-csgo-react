@@ -25,7 +25,7 @@ class BetList extends Component {
       if (bet.finished) {
         return null;
       } else {
-        return <BetItem url={this.props.match.url} key={index} {...bet} />;
+        return <BetItem key={index} {...bet} />;
       }
     });
 

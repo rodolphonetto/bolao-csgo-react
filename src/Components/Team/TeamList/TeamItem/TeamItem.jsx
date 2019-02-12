@@ -18,15 +18,15 @@ const TeamItem = props => {
       <span className={style.name}>{props.name}</span>
       <img
         className={style.logo}
-        src={`${process.env.REACT_APP_URL_IMG}/${props.logo}`}
+        src={props.url}
         alt={`Logo do ${props.name}`}
       />
       <img
         className={style.flag}
-        src={`${process.env.REACT_APP_URL_IMG}/${props.country.flag}`}
+        src={props.country.url}
         alt={`Nacionalidade do ${props.name}`}
       />
-      <Link to={`${props.url}/edit-team/${props._id}`}>
+      <Link to={`${props.urlEdit}/edit-team/${props._id}`}>
         <Button btStyle="edit">Editar</Button>
       </Link>
       <div>

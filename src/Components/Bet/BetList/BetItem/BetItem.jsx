@@ -49,7 +49,7 @@ class BetItem extends Component {
             <span className={style.name}>{this.props.teamA.name}</span>
             <img
               className={style.logo}
-              src={`${process.env.REACT_APP_URL_IMG}/${this.props.teamA.logo}`}
+              src={this.props.teamA.url}
               alt={`Logo do ${this.props.teamA.name}`}
             />
             {this.props.open ? (

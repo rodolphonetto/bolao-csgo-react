@@ -23,7 +23,7 @@ class CountryList extends Component {
   render() {
     const countries = this.props.countries.map((country, index) => {
       return (
-        <CountryItem url={this.props.match.url} key={index} {...country} />
+        <CountryItem urlEdit={this.props.match.url} key={index} {...country} />
       );
     });
 
