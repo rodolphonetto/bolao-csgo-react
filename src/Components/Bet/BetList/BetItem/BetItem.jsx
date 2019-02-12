@@ -17,10 +17,8 @@ class BetItem extends Component {
   }
 
   componentDidMount() {
-    console.log(this.props.bet);
     this.bet = this.props.bets.filter(b => b.user === this.props.userID);
     if (this.bet.length > 0) {
-      console.log(this.bet);
       this.setState({
         resultA: this.bet[0].resultA,
         resultB: this.bet[0].resultB
@@ -90,10 +88,10 @@ class BetItem extends Component {
         </div>
         <input type="hidden" name="matchID" value={this.props._id} />
         <input type="hidden" name="userID" value={this.props.userID} />
-        {this.props.errors.msg
-          ? this.props.errors.msg.matchID === this.props._id && (
+        {this.props.errors
+          ? this.props.errors.matchID === this.props._id && (
               <div className={style.errors}>
-                {this.props.errors.msg.errors.result}
+                {this.props.errors.errors.result}
               </div>
             )
           : this.props.edited && (
@@ -110,7 +108,6 @@ const mapStateToProps = state => {
     loading: state.bet.loading,
     errors: state.bet.errors,
     edited: state.bet.edited,
-    bets: state.bet.bets
   };
 };
 
