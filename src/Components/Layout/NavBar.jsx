@@ -16,6 +16,11 @@ const NavBar = props => {
             <li className={style.menuOption}>Cadastre-se</li>
           </Link>
         )}
+        {props.isAuthenticated && (
+          <Link to="/ranking">
+            <li className={style.menuOption}>Ranking</li>
+          </Link>
+        )}
         {props.isAuthenticated ? (
           <Link to="/logout">
             <li className={style.menuOption}>Logout</li>

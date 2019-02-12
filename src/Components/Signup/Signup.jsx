@@ -26,7 +26,7 @@ class Signup extends Component {
     if (this.props.msg) {
       setTimeout(() => {
         this.props.history.push("/");
-      }, 2000);
+      }, 1000);
     }
   }
 

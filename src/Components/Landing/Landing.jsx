@@ -11,13 +11,15 @@ import Country from "../Country/Country";
 
 const Landing = () => {
   return (
-    <div className={style.landing}>
-      <NavBar />
-      <Route path="/signup" exact component={Signup} />
-      <Route path="/logout" exact component={Logout} />
-      <Route path="/dashboard" exact component={Dashboard} />
-      <Route path="/countries" component={Country} />
-      <Route path="/" exact component={Login} />
+    <div className={style.background}>
+      <div className={style.landing}>
+        <NavBar />
+        <Route path="/signup" exact component={Signup} />
+        <Route path="/logout" exact component={Logout} />
+        <Route path="/dashboard" exact component={Dashboard} />
+        <Route path="/countries" component={Country} />
+        <Route path="/" exact component={Login} />
+      </div>
     </div>
   );
 };

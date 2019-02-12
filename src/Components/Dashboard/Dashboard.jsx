@@ -11,11 +11,14 @@ import Country from "../Country/Country";
 import Team from "../Team/Team";
 import Match from "../Match/Match";
 import Bet from "../Bet/Bet";
+import Ranking from "../Ranking/Ranking";
 
 class Dashboard extends Component {
   render() {
     return (
       <>
+        <div className={style.background} />
+
         <div className={style.general}>
           <NavBar />
           {this.props.loading && <Spinner />}
@@ -69,8 +72,11 @@ class Dashboard extends Component {
           ) : (
             <>
               <div className={style.internalPanel}>
-                <div> </div>
                 <Route path={this.props.match.url} component={Bet} />
+                <Route
+                  path={`${this.props.match.url}/ranking`}
+                  component={Ranking}
+                />
               </div>
             </>
           )}

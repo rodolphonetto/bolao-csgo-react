@@ -35,69 +35,70 @@ class BetList extends Component {
       <>
         <div className={style.wrapper}>
           <div className={style.bets}>{bets}</div>
-          <div className={style.errors}>{this.props.errors.result}</div>
-          {this.props.isAuth && (
-            <>
-              <div className={style.controlls}>
-                {this.props.navigation.currentPage !== 1 && (
-                  <Link
-                    to={{
-                      pathname: this.props.match.url,
-                      search: `?page=1&maxItems=12`
-                    }}
-                  >
-                    <Button btStyle="navPage" controlls="yes">
-                      Primeira
-                    </Button>
-                  </Link>
-                )}
+          <div className={style.footer}>
+            {this.props.isAuth && (
+              <>
+                <div className={style.controlls}>
+                  {this.props.navigation.currentPage !== 1 && (
+                    <Link
+                      to={{
+                        pathname: this.props.match.url,
+                        search: `?page=1&maxItems=12`
+                      }}
+                    >
+                      <Button btStyle="navPage" controlls="yes">
+                        Primeira
+                      </Button>
+                    </Link>
+                  )}
 
-                {this.props.navigation.hasPrevPage && (
-                  <Link
-                    to={{
-                      pathname: this.props.match.url,
-                      search: `?page=${
-                        this.props.navigation.previousPage
-                      }&maxItems=12`
-                    }}
-                  >
-                    <Button btStyle="navPage" controlls="yes">
-                      {"<"}
-                    </Button>
-                  </Link>
-                )}
-                {this.props.navigation.hasNextPage && (
-                  <Link
-                    to={{
-                      pathname: this.props.match.url,
-                      search: `?page=${
-                        this.props.navigation.nextPage
-                      }&maxItems=12`
-                    }}
-                  >
-                    <Button btStyle="navPage" controlls="yes">
-                      {">"}
-                    </Button>
-                  </Link>
-                )}
-                {this.props.navigation.lastPage !==
-                  this.props.navigation.currentPage && (
-                  <Link
-                    to={{
-                      pathname: this.props.match.url,
-                      search: `?page=${
-                        this.props.navigation.lastPage
-                      }&maxItems=12`
-                    }}
-                  >
-                    <Button btStyle="navPage" controlls="yes">
-                      {"Ultima"}
-                    </Button>
-                  </Link>
-                )}
-              </div>
-            </>
-          )}
+                  {this.props.navigation.hasPrevPage && (
+                    <Link
+                      to={{
+                        pathname: this.props.match.url,
+                        search: `?page=${
+                          this.props.navigation.previousPage
+                        }&maxItems=12`
+                      }}
+                    >
+                      <Button btStyle="navPage" controlls="yes">
+                        {"<"}
+                      </Button>
+                    </Link>
+                  )}
+                  {this.props.navigation.hasNextPage && (
+                    <Link
+                      to={{
+                        pathname: this.props.match.url,
+                        search: `?page=${
+                          this.props.navigation.nextPage
+                        }&maxItems=12`
+                      }}
+                    >
+                      <Button btStyle="navPage" controlls="yes">
+                        {">"}
+                      </Button>
+                    </Link>
+                  )}
+                  {this.props.navigation.lastPage !==
+                    this.props.navigation.currentPage && (
+                    <Link
+                      to={{
+                        pathname: this.props.match.url,
+                        search: `?page=${
+                          this.props.navigation.lastPage
+                        }&maxItems=12`
+                      }}
+                    >
+                      <Button btStyle="navPage" controlls="yes">
+                        {"Ultima"}
+                      </Button>
+                    </Link>
+                  )}
+                </div>
+              </>
+            )}
+          </div>
         </div>
       </>
     );
