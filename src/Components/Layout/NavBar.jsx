@@ -17,7 +17,7 @@ const NavBar = props => {
           </Link>
         )}
         {props.isAuthenticated && (
-          <Link to="/ranking">
+          <Link to="dashboard/ranking">
             <li className={style.menuOption}>Ranking</li>
           </Link>
         )}

@@ -1,0 +1,17 @@
+.rankingTable {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 50px 1fr;
+  grid-template-areas:
+    "nome pontos"
+    "users points";
+  color: white;
+  justify-content: center;
+  margin: 0 auto;
+  background-color: blue;
+  max-width: 25vw;
+}
+
+.row {
+  justify-self: center;
+}

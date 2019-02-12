@@ -3,6 +3,8 @@ import { Route } from "react-router-dom";
 import { connect } from "react-redux";
 
 import BetList from "./BetList/BetList";
+
+
 class Bet extends Component {
   componentDidUpdate() {
     if (!this.props.isAuth) {

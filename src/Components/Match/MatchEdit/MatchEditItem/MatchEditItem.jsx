@@ -12,13 +12,17 @@ class MatchEdit extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      desc: ""
+      desc: "",
+      resultA: "",
+      resultB: ""
     };
   }
 
   componentDidMount() {
     this.setState({
-      desc: this.props.desc
+      desc: this.props.desc,
+      resultA: this.props.resultA,
+      resultB: this.props.resultB
     });
   }
 
@@ -57,8 +61,6 @@ class MatchEdit extends Component {
           name="desc"
           value={this.state.desc}
           changed={this.onChangeHandler}
-          error={this.props.errors.resultAEmpty}
-          errosMsg={this.props.errors.resultAEmpty}
         />
         <InputSelect
           name="teamA"
@@ -70,6 +72,15 @@ class MatchEdit extends Component {
           teamname={this.props.teamA.name}
           teamID={this.props.teamA._id}
         />
+        <InputGroup
+          label="Placar Time A"
+          Labeltype="form"
+          htmlFor="resultA"
+          type="text"
+          name="resultA"
+          value={this.state.resultA}
+          changed={this.onChangeHandler}
+        />
         <InputSelect
           name="teamB"
           label="Time B"
@@ -79,6 +90,15 @@ class MatchEdit extends Component {
           errosMsg={this.props.errors.teamB}
           teamname={this.props.teamB.name}
           teamID={this.props.teamB._id}
+        />
+        <InputGroup
+          label="Placar Time B"
+          Labeltype="form"
+          htmlFor="resultB"
+          type="text"
+          name="resultB"
+          value={this.state.resultB}
+          changed={this.onChangeHandler}
         />
         <SelectGroup
           name="open"
