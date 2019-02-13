@@ -49,9 +49,10 @@ class Ranking extends Component {
           <Spinner />
         ) : (
           <div className={style.rankingTable}>
-            Pontos Nome
-            <div className={style.row style.rowUser}>{userRanked}</div>
-            <div className={style.row}> {userPoints}</div>
+            <span className={style.titles}>Players</span>
+            <span className={style.titles}>Pontos</span>
+            <div>{userRanked}</div>
+            <div>{userPoints}</div>
           </div>
         )}
       </div>

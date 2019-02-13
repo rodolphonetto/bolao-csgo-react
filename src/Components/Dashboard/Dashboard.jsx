@@ -12,6 +12,7 @@ import Team from "../Team/Team";
 import Match from "../Match/Match";
 import Bet from "../Bet/Bet";
 import Ranking from "../Ranking/Ranking";
+import Finished from "../Finished/Finished";
 
 class Dashboard extends Component {
   render() {
@@ -20,7 +21,7 @@ class Dashboard extends Component {
         <div className={style.background} />
 
         <div className={style.general}>
-          <NavBar />
+          <NavBar url={this.props.match.url} />
           {this.props.loading && <Spinner />}
           {!this.props.isAuth ? (
             <h1>Você não está autorizado</h1>
@@ -76,6 +77,10 @@ class Dashboard extends Component {
                 <Route
                   path={`${this.props.match.url}/ranking`}
                   component={Ranking}
+                />
+                <Route
+                  path={`${this.props.match.url}/finished`}
+                  component={Finished}
                 />
               </div>
             </>

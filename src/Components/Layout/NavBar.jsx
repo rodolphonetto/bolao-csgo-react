@@ -17,7 +17,17 @@ const NavBar = props => {
           </Link>
         )}
         {props.isAuthenticated && (
-          <Link to="dashboard/ranking">
+          <Link to={`${props.url}/finished`}>
+            <li className={style.menuOption}>Partidas Encerradas</li>
+          </Link>
+        )}
+        {props.isAuthenticated && (
+          <Link to="/dashboard">
+            <li className={style.menuOption}>Partidas</li>
+          </Link>
+        )}
+        {props.isAuthenticated && (
+          <Link to={`${props.url}/ranking`}>
             <li className={style.menuOption}>Ranking</li>
           </Link>
         )}
