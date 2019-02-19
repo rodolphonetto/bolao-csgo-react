@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Route, Link } from "react-router-dom";
+import { Route, Link, Switch } from "react-router-dom";
 
 import style from "./DashBoard.module.scss";
 
@@ -70,15 +70,16 @@ class Dashboard extends Component {
                   path={`${this.props.match.url}/teams`}
                   component={Team}
                 />
-                <Route
-                  path={`${this.props.match.url}/matches/finished`}
-                  component={Match}
-                />
-                <Route
-                  path={`${this.props.match.url}/matches`}
-                  exact
-                  component={Match}
-                />
+                <Switch>
+                  <Route
+                    path={`${this.props.match.url}/matches/finished`}
+                    component={Match}
+                  />
+                  <Route
+                    path={`${this.props.match.url}/matches`}
+                    component={Match}
+                  />
+                </Switch>
               </div>
               <Route path="/logout" exact component={Logout} />
             </>
