@@ -22,7 +22,19 @@ class MatchList extends Component {
 
   render() {
     const matches = this.props.matches.map((match, index) => {
-      return <MatchItem url={this.props.match.url} key={index} {...match} />;
+      if (this.props.match.url === "/dashboard/matches/finished") {
+        if (match.finished) {
+          return (
+            <MatchItem url={this.props.match.url} key={index} {...match} />
+          );
+        }
+      } else {
+        if (!match.finished) {
+          return (
+            <MatchItem url={this.props.match.url} key={index} {...match} />
+          );
+        }
+      }
     });
 
     return this.props.loading ? (

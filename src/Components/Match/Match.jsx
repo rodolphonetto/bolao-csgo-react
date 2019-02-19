@@ -21,6 +21,11 @@ class Match extends Component {
         {!this.props.isAuth && <h1>Você não está autorizado</h1>}
         <Route path={`${this.props.match.url}`} exact component={MatchList} />
         <Route
+          path={`${this.props.match.url}/finished`}
+          exact
+          component={MatchList}
+        />
+        <Route
           path={`${this.props.match.url}/edit-match/:_id`}
           component={MatchEdit}
         />

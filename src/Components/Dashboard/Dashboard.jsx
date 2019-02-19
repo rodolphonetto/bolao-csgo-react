@@ -12,7 +12,6 @@ import Team from "../Team/Team";
 import Match from "../Match/Match";
 import Bet from "../Bet/Bet";
 import Ranking from "../Ranking/Ranking";
-import Finished from "../Finished/Finished";
 
 class Dashboard extends Component {
   render() {
@@ -48,6 +47,14 @@ class Dashboard extends Component {
                   <Link to={`${this.props.match.url}/countries`}>Players</Link>
                   <Link
                     to={{
+                      pathname: `${this.props.match.url}/matches/finished`,
+                      search: `?page=1&maxItems=12`
+                    }}
+                  >
+                    Partidas Encerradas
+                  </Link>
+                  <Link
+                    to={{
                       pathname: `${this.props.match.url}/matches`,
                       search: `?page=1&maxItems=12`
                     }}
@@ -64,7 +71,12 @@ class Dashboard extends Component {
                   component={Team}
                 />
                 <Route
+                  path={`${this.props.match.url}/matches/finished`}
+                  component={Match}
+                />
+                <Route
                   path={`${this.props.match.url}/matches`}
+                  exact
                   component={Match}
                 />
               </div>
@@ -77,10 +89,6 @@ class Dashboard extends Component {
                 <Route
                   path={`${this.props.match.url}/ranking`}
                   component={Ranking}
-                />
-                <Route
-                  path={`${this.props.match.url}/finished`}
-                  component={Finished}
                 />
               </div>
             </>
