@@ -107,7 +107,7 @@ const mapStateToProps = state => {
     userID: state.auth.currentUser.userid,
     loading: state.bet.loading,
     errors: state.bet.errors,
-    edited: state.bet.edited,
+    edited: state.bet.edited
   };
 };
 
